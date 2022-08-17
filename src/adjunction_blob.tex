@@ -1,4 +1,60 @@
 
+\subsection{Nakayama's Lemma and Corollaries}
+
+\begin{lemma}[Nakayama's Lemma]
+  \label{lem:nakayama}
+  State Nakayama's Lemma here.
+\end{lemma}
+
+\begin{proof}
+  The proof of this is already in Mathlib
+\end{proof}
+
+\begin{corollary}
+  \label{cor:local_maximal_gereating_set_basis_residue}
+  \uses{lem:nakayama}
+  Let $(R,\mathfrak{m},k)$ be a local ring. 
+  Let $M$ be an $R$-module.
+  If the elements $x_1, \ldots, x_n$ are elements in
+  $M$ that form a basis in the projection 
+  $M / \mathfrak{m} M$, then $x_1, ldots, x_n$ generate $M$.
+\end{corollary}
+
+\begin{proof}
+  See Atiyah-MacDonald Corollary 2.8
+\end{proof}
+
+The following lemma is used by user6:
+
+\begin{lemma} \label{lem:fin_gen_proj_over_local_is_free}
+  \uses{cor:local_maximal_gereating_set_basis_residue}
+	A finitely generated projective module 
+	over a regular local ring is free
+\end{lemma}
+
+\begin{proof}
+	A proof of this theorem can be pieced together from this
+	stack exchange answer:
+	https://math.stackexchange.com/questions/3362463/projective-modules-over-local-rings-are-free-matsumuras-proof
+	This proof needs
+	\begin{itemize}
+		\item Nakayama's lemma
+		\item Equivalent definitions of projective modules
+	\end{itemize}
+\end{proof}
+
+\begin{lemma}
+  \label{lem:surj_endo_is_isom}
+  \uses{cor:local_maximal_gereating_set_basis_residue}
+  Let $f : M \to M$ be a surjection of modules 
+  (over a local ring?).
+  Then $f$ is an isomorphism.
+\end{lemma}
+
+\begin{proof}
+
+  I think this uses the Corollary 2.8 version of Nakayama's Lemma
+\end{proof}
 
 \subsection{Regular Varieties}
 
@@ -7,6 +63,7 @@ notions of ``smoothness'' given in Vakil Chatper 12.
 The one we need for this proof is ``regularity''.
 
 \begin{proposition} \label{prop:regular_def_equiv}
+   \uses{cor:local_maximal_gereating_set_basis_residue}
 	Let \((R,\mathfrak{m},k)\) be a noetherian ring. 
 	The following are equivalent:
 	\begin{enumerate}[(a)]
@@ -57,6 +114,7 @@ conormal sequence is exact on the left by both
 Hartshorne and user6.
 
 \begin{lemma} \label{lem:regular_localizes}
+   \uses{def:regular}
 	The localization of a regular local ring at (read: away from) a prime 
 	ideal is a regular local ring.
 \end{lemma}
@@ -71,26 +129,29 @@ Hartshorne and user6.
 	\end{itemize}
 \end{proof}
 
-The following lemma is used by user6:
 
-\begin{lemma} \label{lem:fin_gen_proj_over_local_is_free}
-	A finitely generated projective module 
-	over a regular local ring is free
+\subsection{Misc Commutative Algebra}
+
+\begin{lemma}
+  \label{lem:finite_free_surj_splits}
+  A surjection of finite free modules splits
 \end{lemma}
 
+\begin{lemma}
+  \label{lem:rank_additive_exact_seq}
+  Rank is additive on short exact sequences
+\end{lemma}
+
+\begin{theorem}
+  \label{thm:hilbert_basis}
+  Let $R$ be a noetherian ring.
+  Then $R[x]$ is noetherian.
+\end{theorem}
 
 \begin{proof}
-	A proof of this theorem can be pieced together from this
-	stack exchange:
-	https://math.stackexchange.com/questions/3362463/projective-modules-over-local-rings-are-free-matsumuras-proof
-	This proof needs
-	\begin{itemize}
-		\item Nakayama's lemma
-		\item Equivalent definitions of projective modules
-	\end{itemize}
+  The proof of this is already in mathlib:
+  %polynomial.is_noetherian_ring
 \end{proof}
-
-
 
 %TODO: define a regular scheme using this as the local definition
 
@@ -180,6 +241,7 @@ The set of derivations is denoted \(\Der_{R}(A,M)\)
 	the functor \(M \mapsto \Der_{R}(A,M)\) 
 	from \(A\)-modules to \(R\)-modules.
 \end{lemma}
+
 
 Of course as we define by universal property via representaility,
 it is not clear that the module exists.
@@ -377,7 +439,7 @@ We will need ideal sheaves for this.
 %
 %
 
-\subsection{Regularity implies conormal sequence is left-exact}
+%\subsection{Regularity implies conormal sequence is left-exact}
 
 % I think the following is just wrong,
 %   TODO: delete this when the proof of Hartshorne II.5.7 is finished
@@ -420,6 +482,90 @@ We will need ideal sheaves for this.
 
 %\subsection{Noetherian Schemes}
 
+%\begin{theorem}
+%	[Hartshorne II.8.7]
+%	\label{thm:regular_implies_conormal_exact}
+%	\uses{
+%	  thm:stalk_free_implies_locally_free,
+%	  lem:kahler_diff_sheaf_quasi_coh,
+%	  lem:regular_localizes,
+%	  lem:fin_gen_proj_over_local_is_free
+%  }
+%	Let \((B,\mathfrak{m},k)\) be a local ring 
+%	which contains a field \(k\) 
+%	isomorphic to its residue field
+%	% is this the right assumption?
+%	% should it really be equal characteristic?
+%	Then the map 
+%	\(\mathfrak{m} / \mathfrak{m}^{2} \to \Omega_{B / k} \otimes_{B} k\)
+%	which is the first map in the 
+%	conormal right-exact sequence
+%	is an isomorphism.
+%\end{theorem}
+
+
+%\begin{theorem}
+%	[Hartshorne II.8.8]
+%	Let \((B,\mathfrak{m},k)\) be a local ring of
+%	equal characteristic.
+%	% is this the correct assumption?
+%	% should it really be that it contains a field isomorphic to the residue field?
+%	In addition, assume that
+%	\(k\) is a perfect field,
+%	and that \(B\) is a localization of
+%	a finitely generatd \(k\)-algebra.
+%	Then \(\Omega_{B / k}\) is a free \(B\)-module
+%	of rank equal to the dimension of \(B\) 
+%	if and only if \(B\) is a regular local ring.
+%
+%\end{theorem}
+%
+%
+%\begin{theorem}
+%	[Hartshorne II.8.15]
+%	Let \(X\) be an irreducible separated scheme of finite type 
+%	over an algebraically closed field \(k\).
+%	Then \(\Omega_{X / k}\) is a locally free
+%	sheaf of rank \(\dim X\) if and only if 
+%	\(X\) is regular.
+%\end{theorem}
+%
+%
+%\begin{theorem}
+%	[Hartshorne II.8.17]
+%	Let \(X\) be a regular variety over \(k\).
+%	Let \(W\) be an irreducible closed subscheme 
+%	with corresponding sheaf of ideals \(\mathscr{I}\).
+%	Then \(W\) is regular if and only if the following
+%	two conditions hold:
+%	\begin{enumerate}[(1)]
+%		\item \(\Omega_{Y / k}\) is locally free
+%		\item The conormal exact sequence
+%			\[
+%			\begin{tikzcd}
+%			0 \arrow{r}{} & \conormal \arrow{r}{} & 
+%			\Omega_{X / k} \otimes \mathcal{O}_{Y}  \arrow{r}{} & 
+%			\Omega_{Y / k} \arrow{r}{} & 0
+%			\end{tikzcd}
+%			\]
+%			is exact.
+%	\end{enumerate}
+%\end{theorem}
+%
+%\begin{cor}
+%	In the situation of the conclusion of the previous theorem, 
+%	\(\mathscr{I}\) is locally generated by 
+%	\(\codim(W)\) elements.
+%\end{cor}
+%
+%\begin{cor}
+%	In the situation of the conclusion of the previous theorem,
+%	\(\conormal\) is locally free of rank \(\codim(W)\).
+%\end{cor}
+%
+
+\subsection{Coherent Sheaves and Stalks}
+
 \begin{definition}
 	\label{def:noetherian_scheme}
 	Let \(X\) be a scheme. 
@@ -428,6 +574,40 @@ We will need ideal sheaves for this.
 	\(\{U_{i} = \Spec A_{i}\}\) such that
 	all \(A_{i}\) are noetherian rings.
 \end{definition}
+
+\begin{lemma}
+  \label{lem:stalks_preserve_colimits}
+  The functor on sheaves of abelian groups
+  (and in particular, quasi-coherent sheaves)
+  on a scheme $X$
+  which takes a sheaf $\mathcal{F}$ to its
+  stalk at the point $x$, $\mathcal{F}_x$,
+  is a functor that preserves colimits.
+\end{lemma}
+
+\begin{proof}
+  Taking stalks is itself a colimit, and
+  colimits commute with colimits.
+\end{proof}
+
+\begin{theorem}
+  \label{thm:stalk_exact_iff_sheaf_exact}
+  \uses{lem:stalks_preserve_colimits}
+  Consider an exact sequence of abelian (coherent) sheaves
+  on a scheme.
+  Can be left-exact, right-exact, exact in the middle,
+  short exact, longer, anything.
+  The seqeunce is exact iff it exact on all stalks.
+\end{theorem}
+
+\begin{corollary}
+  \label{cor:stalk_preserves_quotients}
+  \uses{thm:stalk_exact_iff_sheaf_exact}
+  A stalk of a quotient of ideal sheaves
+  is isomoprhic to the quotient of the stalks
+  of the ideal sheaves.
+\end{corollary}
+
 
 \begin{lemma}
 	\label{lem:affine_stalk_free_implies_locally_free}
@@ -447,6 +627,8 @@ We will need ideal sheaves for this.
 	to being an affine scheme.
 \end{proof}
 
+
+
 %TODO: put most of the proof of this into the affine version above
 
 \begin{theorem}
@@ -464,6 +646,7 @@ We will need ideal sheaves for this.
 \end{theorem}
 
 \begin{proof}
+   \uses{def:noetherian_scheme}
 	WLOG, we can assume that \(X\) is affine, so 
 	\(X = \Spec A\), and furthermore we can assume
 	\(A\) is noetherian.
@@ -600,83 +783,223 @@ We will need ideal sheaves for this.
 	
 \end{proof}
 
-\begin{theorem}
-	[Hartshorne II.8.7]
-	\label{thm:regular_implies_conormal_exact}
-	\uses{thm:stalk_free_implies_locally_free,lem:kahler_diff_sheaf_quasi_coh}
-	Let \((B,\mathfrak{m},k)\) be a local ring 
-	which contains a field \(k\) 
-	isomorphic to its residue field
-	% is this the right assumption?
-	% should it really be equal characteristic?
-	Then the map 
-	\(\mathfrak{m} / \mathfrak{m}^{2} \to \Omega_{B / k} \otimes_{B} k\)
-	which is the first map in the 
-	conormal right-exact sequence
-	is an isomorphism.
+\begin{corollary}
+  \label{cor:fintype_stalk_free_implies_locally_free}
+  \uses{thm:stalk_free_implies_locally_free,thm:hilbert_basis}
+  Let $X$ be a variety over $k$.
+  Same comclusion as above.
 \end{theorem}
 
+\begin{proof}
+  $X$ has an affine cover of finite type $k$-algebras.
+  Thus, by hilbert basis, it is (locally) noetherian.
+  Apply the previous theorem.
+\end{proof}
 
-%\begin{theorem}
-%	[Hartshorne II.8.8]
-%	Let \((B,\mathfrak{m},k)\) be a local ring of
-%	equal characteristic.
-%	% is this the correct assumption?
-%	% should it really be that it contains a field isomorphic to the residue field?
-%	In addition, assume that
-%	\(k\) is a perfect field,
-%	and that \(B\) is a localization of
-%	a finitely generatd \(k\)-algebra.
-%	Then \(\Omega_{B / k}\) is a free \(B\)-module
-%	of rank equal to the dimension of \(B\) 
-%	if and only if \(B\) is a regular local ring.
-%
-%\end{theorem}
-%
-%
-%\begin{theorem}
-%	[Hartshorne II.8.15]
-%	Let \(X\) be an irreducible separated scheme of finite type 
-%	over an algebraically closed field \(k\).
-%	Then \(\Omega_{X / k}\) is a locally free
-%	sheaf of rank \(\dim X\) if and only if 
-%	\(X\) is regular.
-%\end{theorem}
-%
-%
-%\begin{theorem}
-%	[Hartshorne II.8.17]
-%	Let \(X\) be a regular variety over \(k\).
-%	Let \(W\) be an irreducible closed subscheme 
-%	with corresponding sheaf of ideals \(\mathscr{I}\).
-%	Then \(W\) is regular if and only if the following
-%	two conditions hold:
-%	\begin{enumerate}[(1)]
-%		\item \(\Omega_{Y / k}\) is locally free
-%		\item The conormal exact sequence
-%			\[
-%			\begin{tikzcd}
-%			0 \arrow{r}{} & \conormal \arrow{r}{} & 
-%			\Omega_{X / k} \otimes \mathcal{O}_{Y}  \arrow{r}{} & 
-%			\Omega_{Y / k} \arrow{r}{} & 0
-%			\end{tikzcd}
-%			\]
-%			is exact.
-%	\end{enumerate}
-%\end{theorem}
-%
-%\begin{cor}
-%	In the situation of the conclusion of the previous theorem, 
-%	\(\mathscr{I}\) is locally generated by 
-%	\(\codim(W)\) elements.
-%\end{cor}
-%
-%\begin{cor}
-%	In the situation of the conclusion of the previous theorem,
-%	\(\conormal\) is locally free of rank \(\codim(W)\).
-%\end{cor}
-%
-\subsection{Discussion of proofs of the left-exactness of conormal bundle}
+\subsection{Irreducible Schemes}
+
+Let $|X|$ be a topological space.
+
+\begin{definition}
+  \label{def:irred_top_space}
+  $|X|$ is irreducible if it cannot be written as a
+  union of two closed subsets $ Z_1 \cup \Z_2$.
+\end{definition}
+
+\begin{lemma}
+  \label{lem:irred_cap_closed_is_irred_top_space}
+  \uses{def:irred_top_space}
+  Let $X$ be a suitable (noetherian? irred? zariski?)
+  topological space. 
+  Then the intersection of an open with an irreducible is irreducible.
+\end{lemma}
+
+Now, let $X$ be a scheme with $|X|$ its associated
+topological space.
+
+\begin{definition}
+  \label{def:irred_scheme}
+  \uses{def:irred_top_space}
+  $X$ is irreducible if $|X|$ is.
+\end{definition}
+
+\begin{lemma}
+  \label{lem:affine_cap_irred_is_affine}
+  Let $X$ be a scheme, $U$ an affine open 
+  neighborhood and $Y$ a closed (irreducible?) subscheme.
+  Then $U \cap Y$ is an affine open neighborhood
+  of $Y$
+\end{lemma}
+
+\begin{proposition}
+  \label{prop:scheme_definullstellensatz}
+  Let $X = \Spec R$ be an affine scheme.
+  Then the irreducible subsets of the
+  topological space $|X|$ are in one-to-one
+  correspondence with the prime ideals of
+  $R$ on the association 
+  $\mathfrak{p} \mapsto V(\mathfrak{p})$.
+\end{proposition}
+
+\begin{proof}
+  This statement looks a lot like the nullstellensatz,
+  but it actually just follows straight from the
+  definitions.
+\end{proof}
+
+\subsection{Left-exactness of conormal bundle}
+m
+\begin{theorem}
+  \label{thm:regular_implies_kahler_diff_free}
+  \uses{lem:kahler_diff_sheaf_quasi_coh}
+  Let $X$ be a regular variety over a field $k$.
+  Then $\Omega_{X/k}$ is a locally free sheaf of
+  rank $\dim X$.
+\end{theorem}
+
+\begin{lemma}
+  \label{lem:reg_subvar_conormal_locally_free}
+  Let $X$ be a regular variety, and let $Y$ be a regular
+  subvariety.
+  Let $\mathcal{I}$ be the ideal sheaf of $Y$.
+  Then $\conormal$ is a locally free sheaf of rank 
+  $\dim X - \dim Y$.
+\end{lemma}
+
+\begin{proof}
+  \uses{
+    lem:irred_cap_closed_is_irred_top_space,
+    prop:scheme_definullstellensatz,
+    lem:regular_localizes,
+    prop:regular_def_equiv,
+    cor:fintype_stalk_free_implies_locally_free,
+  }
+
+  Let $U = \Spec R$ be an affine open neighborhood of $y$ in $X$.
+  
+  4. $U \cap Y$ is also affine and irreducible ($Y$ is irred)
+     By Lemmas \ref{lem:irred_cap_closed_is_irred_top_space}
+
+  5. As $U \cap Y$ is irreducibe, it corresponds to a prime ideal
+     $\mathfrak{p}$.
+     By Lemma \ref{prop:scheme_definullstellensatz}.
+
+  6. We work in the local ring of $X$ at $\mathfrak{p}$, which is $R_\mathfrak{p}$.
+     Let $\mathfrak{m}$ be the maximal ideal $\mathfrak{p} R_\mathfrak{p}$.
+     Then $\mathfrak{m} / \mathfrak{m}^2$ is a free 
+     $R_\mathfrak{p} / \mathfrak{m}$ module of rank
+     $\dim R_\mathfrak{p} = \text{ht} P = n-s$, where $n = \dim X$.
+     By \ref{lem:regular_localizes} and \ref{prop:regular_def_equiv}
+
+
+  7. Thus, by Hartshorne II.5.7 
+     (\ref{cor:fintype_stalk_free_implies_locally_free}) 
+     we have some $f$ not in $\mathfrak{p}$
+     such that $(\mathfrak{p} / \mathfrak{p}^2)_f$ is free of rank $r$.
+\end{proof}
+
+\begin{theorem}
+  \label{thm:regular_implies_conormal_exact}
+  The conormal sequence is exact on 
+  the left.
+\end{theorem}
+
+\begin{proof}
+  \uses{
+    lem:reg_subvar_conormal_locally_free,
+    thm:regular_implies_kahler_diff_free,
+    thm:stalk_exact_iff_sheaf_exact,
+    cor:stalk_preserves_quotients,
+    lem:stalks_preserve_colimits,
+    lem:fin_gen_proj_over_local_is_free,
+    lem:surj_endo_is_isom,
+    lem:rank_additive_exact_seq,
+    lem:fin_gen_proj_over_local_is_free,
+    lem:finite_free_surj_splits
+  }
+  %This is the user6 prroof
+
+  1. $Y$ is regular, therefore 
+     $\Omega_{Y/k}$ is free of rank
+     $s = \dim Y$.
+     Likewise, $X$ is regular and
+     $\Omega_{X/k}$ is free of rank
+     $n = \dim X$.
+  By Theorem \ref{thm:regular_implies_kahler_diff_free}
+  
+  2. We have the conormal exact sequence
+
+  3. Take the stalk of this sequence at an
+     arbitrary closed point $y \in Y$.
+     By Theorem \ref{thm:exact_iff_sheaf_exact}
+
+  3a. The stalk-taking/localization
+      pulls into the $\mathcal{I} / \mathcal{I}^2$.
+      By Corollary \ref{cor:stalk_preserves_quotients}
+
+  3b. The stalk-taking/localization
+      pulls into the restriction/tensor product
+      in the middle of the sequence
+      By Lemma \ref{lem:stalks_preserve_colimits} 
+      (tensor is a colimit, in fact a pushout).
+  
+  Steps 4-7: Apply the previous lemma to conclude that
+  $\conormal$ is locally free.
+
+  Now, we have the conormal exact sequence localized at $y$:
+
+  \[
+    \mathcal{I}_y / \mathcal{I}^2_y 
+    \to
+    \Omega_{X/k,y} \otimes_{\mathcal{O}_{X,y}} \mathcal{O}_{Y,y} 
+    \to
+    \Omega_{Y/k,y} 
+    \to 0
+  \]
+
+  8. The module in the middle of the (localized) exact sequence is free as it is 
+     the localization of a free module. 
+
+  8a. First, we see that $\Omega_{X/k} \otimes_{\mathcal{O}_X} \mathcal{O}_Y$ is a free module,
+      first by using part 1 to see that $\Omega_X$ is free, then using that
+      tensor products commute with direct sums to reduce to the case of $\mathcal{O}_X$,
+      and finally using the identity property of the tensor product.
+      (tensor product identity property will need to be proved, but it's not currently written down)
+
+  8b. Then, we use the fact that localization pulls in/out of the construction (3b).
+
+  Let $u$ be the surjective map in the (localized) conormal exact sequence.
+
+  9.  Then $\Ker u$ is a projective module over $R_\mathfrak{p}$, as
+      the exact sequence
+      \[
+        0 \to \Ker u \to 
+        \Omega_{X/k,y} \otimes_{\mathcal{O}_{X,y}} \mathcal{O}_{Y,y} 
+        \to
+        \Omega_{Y/k,y} 
+        \to 0
+      \]
+      splits (both of the second components are free).
+      By \ref{lem:finite_free_surj_splits}
+
+  10. $\Ker u$ is a (finitely generated) projective module over a local ring, it is free.
+      By \ref{lem:fin_gen_proj_over_local_is_free}
+      
+  11. By the additivity of rank on exact sequences, $\Ker u$ has rank $n-s$.
+      By \ref{lem:rank_additive_exact_seq}
+
+  12. The first map of the localized conormal exact sequence is a surjection from
+      $\mathcal{I}_y / \mathcal{I}^2_y$ and $\Ker u$. 
+      Both of these are free modules of rank $n-s$. 
+      By Nakayama's lemma (the endomorphism from free to free corollary),
+      this is an isomoprhism.
+      By \ref{lem:surj_endo_is_isom}
+
+  13. Thus, on stalks the conormal sequence is exact on the left, so it is 
+      exact globally.
+      By Theorem \ref{thm:stalk_exact_iff_sheaf_exact}.
+\end{proof}
+
 %
 %There are a few of this that I know of:
 %
@@ -735,7 +1058,11 @@ We will need ideal sheaves for this.
 %%  Then use the universal property integral closure (both schemes are integral)
 %%  (probably using integral <==> reduced and irred)
 %
-%\section{Alternate description of the conormal sheaf}
+
+\subsection{Main Proof}
+
+%\subsection{Alternate description of the conormal sheaf}
+
 %
 %\begin{itemize}
 %	\item restriction of sheaves
@@ -743,28 +1070,80 @@ We will need ideal sheaves for this.
 %	\item ideal sheaves
 %	\item ``passing to stalks''
 %\end{itemize}
-%
-%The proof of this is detailed in a nice amount of detail in
-%https://math.stackexchange.com/questions/1672117/conormal-bundle-of-cartier-divisors
+
+\begin{theorem}
+  \label{thm:alt_desc_conormal}
+  Theorem statement here
+\end{theorem}
+
+\begin{proof}
+  The proof of this is detailed in a nice amount of detail in
+  stack overflow, see code comment
+  %https://math.stackexchange.com/questions/1672117/conormal-bundle-of-cartier-divisors
+\end{proof}
+
 %
 %Note that in the stack exchange article they prove more or less this 
 %theorem for an arbitrary subvariety, and the part about divisors
 %is only because of the alternate description of divisors as ideal sheaves.
 %
-%\section{The determinant bundle}
-%
-%
-%\section{The adjunction formula}
-%
-%% the end goal
-%
-%\begin{theorem}[Adjunction Formula]
-%	Let \(X\) be a smooth variety and \(D\) a
-%	(smooth?) divisor. 
-%	Then 
-%	\[
-%		(K_{X} + D)|_{D} = K_{D}
-%	\] 
-%	
-%\end{theorem}
-%
+
+%\subsection{The determinant bundle}
+
+\begin{theorem}
+  \label{thm:det_exact_sequence_tensor}
+  Theorem statement here.
+
+\end{theorem}
+
+
+%\subsection{The Adjunction Formula}
+
+% the end goal
+
+\begin{theorem}[Adjunction Formula]
+	\label{thm:adjunction_formula}
+	Let \(X\) be a smooth variety and \(D\) a
+	(smooth?) divisor. 
+	Then 
+	\[
+    (\omega_{X} \otimes \mathcal{O}_X( D))|_{D} 
+    \isom \omega_{D}
+	\] 
+	
+\end{theorem}
+
+\begin{proof}
+  \uses{
+    thm:det_exact_sequence_tensor,
+    thm:alt_desc_conormal,
+    thm:regular_implies_conormal_exact
+  }
+  We have an exact sequence
+  \[
+    0 \to \conormal \to 
+    \Omega_X|_D \to \Omega_D \to 0
+  \]
+  from the conormal exact sequence, and
+  it is exact on the left by 
+  Theorem \ref{thm:regular_implies_conormal_exact}.
+  We apply fact that the determinant is
+  ``multiplicative'' on short exact sequences,,
+  concluding that 
+  \[
+     \omega_D \otimes \conormal 
+     \isom \omega_X|_D
+   .\]
+   Note that $\conormal$ has rank one, so it's 
+   determinant bundle is itself.
+   Finally,
+   by the alternate description of the conormal
+   sheaf (reference),
+   we tensor both sides by 
+   $\mathcal{O}_X(D)$ which is the inverse
+   of the conormal sheaf, and we conclude the 
+   thoerem.
+
+\end{proof}
+
+
