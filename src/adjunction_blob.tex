@@ -68,7 +68,7 @@ We summarize things which have been proved in the previous section.
    \uses{cor:local_maximal_gereating_set_basis_residue}
 	Let \((R,\mathfrak{m},k)\) be a noetherian ring. 
 	The following are equivalent:
-	\begin{enumerate}[(a)]
+	\begin{enumerate}[label=(\alph*)]
 		\item Let \(n\) be the minimal number of generators of
 			\(\mathfrak{m}\).
 			Then \(n = \dim R\).
@@ -256,7 +256,7 @@ it is not clear that the module exists.
 	Take the free \(R\)-module on the symbols 
 	\(da\) for \(a \in A\), and quotient
 	out by the relations
-	\begin{enumerate}[(1)]
+	\begin{enumerate}[label=(\arabic*)]
 		\item \(dr = 0\) for \(r \in R\) 
 		\item \(d(a + a^{\prime}) = da + da^{\prime}\)
 		\item \(d(aa^{\prime}) = 
@@ -931,7 +931,7 @@ The following is quite important.
   \uses{thm:stalk_free_implies_locally_free,thm:hilbert_basis}
   Let $X$ be a variety over $k$.
   Same comclusion as above.
-\end{theorem}
+\end{corollary}
 
 \begin{proof}
   $X$ has an affine cover of finite type $k$-algebras.
@@ -1020,11 +1020,11 @@ topological space.
      $\mathfrak{p}$.
      By Lemma \ref{prop:scheme_definullstellensatz}.
 
-  6. We work in the local ring of $X$ at $\mathfrak{p}$, which is $R_\mathfrak{p}$.
-     Let $\mathfrak{m}$ be the maximal ideal $\mathfrak{p} R_\mathfrak{p}$.
+     6. We work in the local ring of $X$ at $\mathfrak{p}$, which is $R_{\mathfrak{p}}$.
+     Let $\mathfrak{m}$ be the maximal ideal $\mathfrak{p} R_{\mathfrak{p}}$.
      Then $\mathfrak{m} / \mathfrak{m}^2$ is a free 
-     $R_\mathfrak{p} / \mathfrak{m}$ module of rank
-     $\dim R_\mathfrak{p} = \text{ht} P = n-s$, where $n = \dim X$.
+     $R_{\mathfrak{p}} / \mathfrak{m}$ module of rank
+     $\dim R_{\mathfrak{p}} = \text{ht} P = n-s$, where $n = \dim X$.
      By \ref{thm:regular_rings_localize} and \ref{prop:regular_def_equiv}
 
 
@@ -1106,7 +1106,7 @@ topological space.
 
   Let $u$ be the surjective map in the (localized) conormal exact sequence.
 
-  9.  Then $\Ker u$ is a projective module over $R_\mathfrak{p}$, as
+  9.  Then $\Ker u$ is a projective module over $R_{\mathfrak{p}}$, as
       the exact sequence
       \[
         0 \to \Ker u \to 

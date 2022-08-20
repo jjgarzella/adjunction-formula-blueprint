@@ -26,7 +26,7 @@ We follow Bruns-Herzog almost exclusively.
   Is an exact sequence
   \[
     \ldots \to P^2 \to P^1 \to P^0 \to M \to 0
-  .\]
+  \].
   That is to say, a projective resolution is a
   quasi-isomorphism of complexes between the 
   inclusion of $M$ into chain complexes over $R$
@@ -218,7 +218,7 @@ Other dimension theory necessary? Probably?
   \label{def:reg_ring}
   \uses{def:reg_loc}
   A ring $R$ is regular if 
-  $R_\mathfrak{p}$ is regular
+  $R_{\mathfrak{p}}$ is regular
   for every $\mathfrak{p} \in R$.
 \end{definition}
 
@@ -232,7 +232,7 @@ Other dimension theory necessary? Probably?
 \end{proposition}
 
 \begin{proof}
-  See in adjunction_blob.txt
+  See in \verb|adjunction_blob.txt|
 \end{proof}
 
 \begin{lemma}
@@ -283,7 +283,7 @@ Other dimension theory necessary? Probably?
   \label{def:support_module}
   The support of a module is the set of prime ideals
   $\mathfrak{p} \ins R$ such that 
-  $M_\mathfrak{p} \neq 0$.
+  $M_{\mathfrak{p}} \neq 0$.
 \end{definition}
 
 \begin{proposition}
@@ -292,10 +292,9 @@ Other dimension theory necessary? Probably?
   Let $\mathfrak{p}$ be a prime ideal, 
   then 
   the following are equivalent:
-  \begin{enumerate}[(i)]
-    \item $\mathfrak{p} = \Ann_R (m)$ for some element 
-      $m \in M$.
-    \item $R / \mathfrak{p}$ embeds into $M$.
+  \begin{enumerate}[label=(\roman*)]
+  \item $\mathfrak{p} = \Ann_R (m)$ for some element $m \in M$.
+  \item $R / \mathfrak{p}$ embeds into $M$.
       % \item something about prime submodules
   \end{enumerate}
 \end{proposition}
@@ -473,7 +472,7 @@ This mostly follows Bruns-Herzog 1.2
 
 \begin{proof}
   %TODO
-\begin{proof}
+\end{proof}
 
 \begin{theorem}
   [Ferrand-Vasconcelos, BH 2.2.8]
@@ -491,7 +490,7 @@ This mostly follows Bruns-Herzog 1.2
   resolution.
   Thus, by 1.4.6 it has must have an $R$-regular element $x$.
   . . . finish the proof . . . 
-\begin{proof}
+\end{proof}
 
 % MARK: Auslander-Buchsbaum-Serre (the goal)
 
@@ -499,7 +498,7 @@ This mostly follows Bruns-Herzog 1.2
   \label{thm:auslander_buchsbaum_serre}
   Let $(R,\mathfrak{m},k$ be a noetherian local ring.
   The following are equivalent:
-  \begin{enumerate}[(i)]
+  \begin{enumerate}[label=(\roman*)]
     \item $R$ is regular.
     \item $R$ has finite global dimension.
     \item $\projdim k < \infty$
@@ -529,7 +528,7 @@ This mostly follows Bruns-Herzog 1.2
   \label{thm:regular_rings_localize}
   Let $R$ be a regular local ring, and let
   $\mathfrak{p}$ be a prime ideal in $R$.
-  Then $R_\mathfrak{p}$ is a regular local ring.
+  Then $R_{\mathfrak{p}}$ is a regular local ring.
 \end{theorem}
 
 % probably we want to carry around the dimension n
@@ -537,13 +536,13 @@ This mostly follows Bruns-Herzog 1.2
 \begin{proof}
   \uses{thm:auslander_buchsbaum_serre,prop:existence_min_free_resl,lem:loczn_of_resl_is_resl,lem:min_resl_has_min_length}
   By Auslander-Buchsbaum-Serre, it is enough to show that 
-  $R_\mathfrak{p} / \mathfrak{p}R_\mathfrak{p}$ has finite projective dimension.
+  $R_{\mathfrak{p}} / \mathfrak{p}R_{\mathfrak{p}}$ has finite projective dimension.
   Also by Auslander-Buchsbaum-Serre, we know that 
   $k = R / \mathfrak{m}$ has finite projective dimension.
   Then $k$ has a minimal free resolution of finite length by
   Proposition \ref{existence_min_free_resl}.
   By the fact that the loclization of a resolution is a resolution,
   We get a finite resolution for 
-  $R_\mathfrak{p} / \mathfrak{p}R_\mathfrak{p}$,
+  $R_{\mathfrak{p}} / \mathfrak{p}R_{\mathfrak{p}}$,
   thus any minimal resolution is also finite, giving us what we want.
 \end{proof}
