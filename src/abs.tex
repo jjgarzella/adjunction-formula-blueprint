@@ -10,459 +10,256 @@ This corollary is crucial for our proof of adjunction.
 We follow Bruns-Herzog almost exclusively.
 
 
-
-
-% Start the document
-
-
-
+%TODO: Bring all Nakayama corollaries 
+%      here into section one, prove them,
+%      and then add references to the correct
+%      corollaries anywhere that 'nakayama' or 'Nakayama'
+%      appears in this document.
 
 \subsection{Projective Resolutions}
 
-
-
 \begin{definition}
-
   \label{def:projv_resl}
-
   Let $R$ be a ring. 
-
   Let $M$ be an $R$-module.
-
   A projective resolution of $M$ over $R$
-
   Is an exact sequence
-
   \[
-
     \ldots \to P^2 \to P^1 \to P^0 \to M \to 0
-
   .\]
-
   That is to say, a projective resolution is a
-
   quasi-isomorphism of complexes between the 
-
   inclusion of $M$ into chain complexes over $R$
-
   (i.e. the complex which has $M$ in degree zero,
-
   trivial everywhere else, with trivial maps)
-
   and a bounded—below complex whose
-
   components are projective $R$-modules.
-
 \end{definition}
 
-
-
 \begin{definition}
-
   \label{def:free_resl}
-
   \uses{def:projv_resl}
-
   A free resolution of $M$ over $R$ is 
-
   a projective resolution whose components
-
   $P^i$ are free.
-
 \end{definition}
 
-
-
 \begin{definition}
-
   \label{def:length_of_resl}
-
   \uses{def:projv_resl}
-
   The length of a projective
-
   resolution $P_\cdot$ is 
-
   the highest $i$ such that $P^i$
-
   is nonzero.
-
   If there exists no such $i$, the
-
   length is infinity
-
 \end{definition}
-
-
 
 \begin{definition}
-
   \label{def:projdim}
-
   \uses{def:length_of_resl}
-
   Let $M$ be an $R$-module. 
-
   Then $\projdim M$ is the minimum 
-
   length of a projective resolution of $M$.
-
   It lives in the set $\mathbb{N} \cap \infty$.
-
 \end{definition}
 
-
-
 \begin{lemma}
-
   \label{lem:finite_resl_implies_finite_projdim}
-
   \uses{def:projdim}
-
   If there exists a projective resolution of
-
   $M$ with finite length, then 
-
   $\projdim M < \infty$.
-
 \end{lemma}
 
-
-
 \begin{proof}
-
   Expand definitions, use the definition of minimum.
-
 \end{proof}
-
-
 
 \begin{lemma}
-
   \label{lem:min_resl_has_min_length}
-
   Any resolution of $M$ over $R$ has 
-
   length at least that of the minimal resolution.
-
 \end{lemma}
 
-
-
 \begin{proof}
-
   Expand definitions, use definition of minimum
-
 \end{proof}
-
-
 
 \begin{proposition}
-
   \label{prop:existence_min_free_resl}
-
   \uses{def:free_resl,def:projdim}
-
   There exists a free resolution $F_\cdot$
-
   of $M$ such that length of $F_\cdot$
-
   is equal to the projective dimension of $M$.
-
 \end{proposition}
 
-
-
 \begin{proof}
-
   One has the generators-relations explicit construction,
-
   which should eventually get its own definition.
-
   Then one has to show that this is indeed minimal among
-
   projective resolutions, which I don't remember how to do
-
   the top of my head.
-
 \end{proof}
 
-
-
 %\begin{lemma}
-
 %  \label{lem:projdim_len_minimal_free}
-
 %  Let $R$ be a local noetherian ring, 
-
 %  and $M$ be an $R$-module.
-
 %  Then $\projdim M$ is equal to the length
-
 %  of a minimal free resolution of $M$.
-
 %\end{lemma}
 
-
-
 \begin{definition}
-
   \label{def:globdim}
-
   \uses{def:projdim}
-
   The global dimension of a ring $R$
-
   is the supremum over all $R$-modules
-
   of $\projdim M$.
-
 \end{definition}
-
-
 
 % MARK - localization and resolutions
 
-
-
 \begin{lemma}
-
   \label{lem:loczn_exact}
-
   Localization by a multiplicative set is an exact functor.
-
 \end{lemma}
-
-
 
 \begin{lemma}
-
   \label{lem:loczn_of_resl_is_resl}
-
   \uses{lem:loczn_exact}
-
   Let $M$ be an $R$-module.
-
   Let $S$ be a multiplicative set.
-
   Let $\ldots \to A_2 \to A_1 \to A_0 \to M \to 0$
-
   be a free resoltion of $M$.
-
   Then
-
   $\ldots S^{-1}(A_2) \to S^{-1}(A_1) \to S^{-1}(A_0) \to S^{-1}M \to 0$
-
   is a free resolution of $S^{-1}M$.
-
 \end{lemma}
-
 
 
 % TODO: figure out what we "really want to prove" with localizations and resolutions
-
 %         this is kind of a cop-out
 
+\subsection{Dimension Theory}
 
+\begin{definition}
+  \label{def:dim_module}
+  The krull dimension of a module 
+  is the supremum of the lengths
+  of chains of prime submodules.
+\end{definition}
+
+\begin{definition}
+  \label{def:ring}
+  Krull dim of ring (prime ideals
+  are prime submodules, might need 
+  to show this)
+\end{definition}
+
+Other dimension theory necessary? Probably?
 
 \subsection{Regular elements and sequences}
 
-
-
 \begin{definition}
-
   \label{def:reg_elt}
-
   Let $M$ be an $R$-module.
-
   An element $x \in R$ is $M$-regular if it does 
-
   not annihilate any element in $M$.
-
   In colon notation, it is non a member of the ideal
-
   $( 0 : M )$.
-
   If $x$ is an $R$-regular element, we simply say it is 
-
   a regular element.
-
 \end{definition}
 
-
-
 \begin{definition}
-
   \label{def:weak_reg_seq}
-
   \uses{def:reg_elt}
-
   Let $M$ be an $R$-module.
-
   Then a weak $M$-regular sequence
-
   is a sequence $x_1, \ldots, x_n$ 
-
   with $x_i \in R$ for all $i$,
-
   such that 
-
   $x_i$ is a
-
   $M / (x_1, \ldots, x_{i-1}) M$-regular
-
   element for all $i$.
-
   If $M = R$, we say that $x_1, \ldots, x_n$
-
   is a weak regular sequence. 
-
 \end{definition}
-
-
 
 \begin{definition}
-
   \label{def:reg_seq}
-
   \uses{def:weak_reg_seq}
-
   Let $M$ be an $R$-module.
-
   An $M$-regular sequence is a weak $M$-regular sequence
-
   such that $M / (x_1, \ldots, x_n) M \neq 0$.
-
   If $M = R$, we simply call this a regular sequence.
-
 \end{definition}
-
-
 
 \begin{theorem}
-
   \label{thm:reg_seq_part_of_sys_param}
-
   \uses{def:reg_seq}
-
   Any regular sequence is part of a system of parameters
-
 \end{theorem}
 
-
-
 \begin{proof}
-
   This depends on the notion of depth, a bunch of machinery
-
   from BH chapter 1, and the definition of associated primes.
-
 \end{proof}
 
-
-
 \begin{definition}
-
   \label{def:reg_loc}
-
   A local ring $R$ is regular if 
-
   the minimal number of generators of its
-
   maximal ideal is equal to the dimension of $R$.
-
 \end{definition}
 
-
-
 \begin{definition}
-
   \label{def:reg_ring}
-
   \uses{def:reg_loc}
   A ring $R$ is regular if 
   $R_\mathfrak{p}$ is regular
   for every $\mathfrak{p} \in R$.
 \end{definition}
 
-
-
 \begin{proposition}
-
   \label{prop:reg_def_equiv}
-
   \uses{def:reg_loc}
-
   The following are equivalent
-
   Firstly, $R$ is regular.
-
   Secondly, the zariski cotangent space
-
   is a vector space of dimension $\dim R$.
-
 \end{proposition}
 
-
-
 \begin{proof}
-
   See in adjunction_blob.txt
-
 \end{proof}
-
-
 
 \begin{lemma}
-
   \label{lem:reg_int_dom}
-
   \uses{def:reg_loc}
-
   Every regular ring is an integral domain.
-
 \end{lemma}
 
-
-
 \begin{proposition}[BH 2.2.4]
-
   \label{prop:reg_quot_sys_param}
-
   Let $R$ be a regular local ring. 
-
   Then $R / I$ is regular local if and only if 
-
   $I$ is generated by a (regular) system of parameters
-
   (I.e. a generating set for $\mathfrak{m}$).
-
 \end{proposition}
 
-
 \begin{proof}
-
   \uses{lem:reg_int_dom}
-
   This proof uses the following facts:
 
-
-
   * a Nakayama corollary
-
   
-
   * the fact that regular rings are integral domains
 
-
-
   * the fact that you can't have a proper containment
-
     of integral domains with the same dimension
-
 \end{proof}
-
-
 
 \begin{proposition}
   \label{prop:reg_loc_maximal_reg_seq}
@@ -470,8 +267,6 @@ We follow Bruns-Herzog almost exclusively.
   A local ring $R$ is regular if and only if
   its maximal ideal is generated by a regular sequence.
 \end{proposition}
-
-
 
 \begin{proof}
   \uses{lem:reg_int_dom,thm:reg_seq_part_of_sys_param}
@@ -483,6 +278,13 @@ We follow Bruns-Herzog almost exclusively.
 \end{proof}
 
 \subsection{Associated Primes}
+
+\begin{definition}
+  \label{def:support_module}
+  The support of a module is the set of prime ideals
+  $\mathfrak{p} \ins R$ such that 
+  $M_\mathfrak{p} \neq 0$.
+\end{definition}
 
 \begin{proposition}
   \label{prop:assoc_primes_def_equiv}
@@ -504,6 +306,22 @@ We follow Bruns-Herzog almost exclusively.
   The set $\Assoc_R (M)$ is the set of
   primes satisfying the preivious proposition
 \end{definition}
+
+\begin{proposition}
+  \label{prop:assoc_primes_in_support}
+  The associated primes of $M$ are in the
+  support of $M$.
+\end{proposition}
+
+\subsection{Depth and Regular Sequences}
+
+This mostly follows Bruns-Herzog 1.2
+
+\begin{definition}
+  \label{def:depth}
+  The depth of a module $M$ is . . . 
+\end{definition}
+
 
 \subsection{Auslander-Buchsbaum Formula}
 
@@ -528,39 +346,134 @@ We follow Bruns-Herzog almost exclusively.
     but uses maps, might just follow from AM 2.8)
 \end{proof}
 
+\begin{lemma}
+  \label{lem:projdim_preserved_quotient_reg_elt}
+  BH 1.3.5
+\end{lemma}
+
+\begin{proof}
+  This uses 
+
+  * BH 1.1.5
+
+  * The "tor" characterization of projective dimension
+
+\end{proof}
+
+\begin{theorem}
+  \label{thm:auslander_buchsbaum_formula}
+  depth + projdim = depth
+\end{theorem}
+
+\begin{proof}
+  \uses{
+    lem:module_assoc_maximal_tensor_free_summand,
+    lem:projdim_preserved_quotient_reg_elt,
+  }
+\end{proof}
 
 
+%TODO: figure out if we will actually use this.
 
+%\subsection{Cohen-Macaulay Rings}
+%
+%
+%Let $(R,\mathfrak{m},k)$ be a noetherian local ring.
+%
+%\begin{definition}
+%  \label{def:local_cm}
+%  \uses{def:depth}
+%  An $R$-module $M$ is 
+%  Cohen-Macaulay if $\depth M = \dim M$.
+%  We say that $R$ is a Cohen-Macaulay ring if
+%  $R$ is Cohen-Macaulay as a module.
+%\end{definition}
+%
+%\begin{definition}
+%  \label{def:maxml_local_cm}
+%  \uses{def:dim_module}
+%  $M$ is maximal Cohen-Macaulay if 
+%  it has $\dim M = \dim R$.
+%\end{definition}
+%
+%Now, let $R$ be an arbitrary noetherian ring.
+%
+%\begin{definition}
+%  \label{def:cm}
+%  \uses{def:support_module,def:local_cm}
+%  $M$ is Cohen-Macaulay if 
+%  $M_\mathfrak{m}$ is for all maximal
+%  ideals $\mathfrak{m}$ in the support of $M$.
+%\end{definition}
+%
+%\begin{corollary}
+%  \label{cor:zero_is_cm}
+%  \uses{def:cm}
+%  The zero module is Cohen-Macaulay.
+%\end{corollary}
+%
+%\begin{definition}
+%  \label{def:maxml_cm}
+%  \uses{def:maxml_local_cm}
+%  $M$ is maximal Cohen-Macaulay if 
+%  if $M_\mathfrak{m}$ is for all 
+%  maximal ideals $\mathfrak{m}$.
+%  I.e. there is no support condition as before.
+%\end{definition}
+%
+%\begin{theorem}
+%  [BH 2.1.2]
+%  \label{thm:cm_reg_seq_iff_sys_param}
+%  Let $M$ be a Cohen-Macaulay $R$-module.
+%  Then $x_1, \ldots, x_n$ is a regular sequence
+%  if and only if it is part of a system of parameters.
+%\end{theorem}
+%
+%\begin{proof}
+%  \uses{
+%    prop:assoc_primes_in_support,
+%  }
+%  Uses
+%  
+%  * BH 1.2.13
+%
+%  * the fact that the associated primes are in the support
+%
+%  * some stuff about depth and grade and dimension
+%
+%  * 1.6.19
+%
+%  OR, use hochster's proof in
+%  http://www.math.lsa.umich.edu/~hochster/615W14/CM.pdf
+%\end{proof}
+%
+%\begin{proposition}
+%  \label{prop:cm_syzygy}
+%  Let $R$ be Cohen-Macaulay.
+%  Then any dth syzygy module is a maximal cohen-macaulay or zero
+%
+%\end{proposition}
+%
+%\begin{proof}
+%  https://math.stackexchange.com/questions/159390/bruns-herzog-problem-2-1-26-page-64
+%\end{proof}
 
 \subsection{Proof of Auslander-Buchbaum-Serre}
 
 
 
 \begin{lemma}
-
   \label{lem:reg_implies_finite_global}
-
   \uses{def:globdim}
-
   Let $R$ be a regular local ring.
-
   Then $R$ has finite global dimension.
-
   That is, any finitely generated module $R$ has finite
-
   projective dimension.
-
 \end{lemma}
 
-
-
 \begin{proof}
-
   %TODO
-
 \begin{proof}
-
-
 
 \begin{theorem}
   [Ferrand-Vasconcelos, BH 2.2.8]
@@ -573,50 +486,27 @@ We follow Bruns-Herzog almost exclusively.
   then $I$ is generated by a regular sequence.
 \end{theorem}
 
-
-
 \begin{proof}
-
   Since $I$ has finite projective dimension, it has a finite free
-
   resolution.
-
   Thus, by 1.4.6 it has must have an $R$-regular element $x$.
-
   . . . finish the proof . . . 
-
 \begin{proof}
-
-
 
 % MARK: Auslander-Buchsbaum-Serre (the goal)
 
-
-
 \begin{theorem}[Auslander-Buchsbaum-Serre Criterion, BH 2.2.7]
-
   \label{thm:auslander_buchsbaum_serre}
-
   Let $(R,\mathfrak{m},k$ be a noetherian local ring.
-
   The following are equivalent:
-
   \begin{enumerate}[(i)]
-
     \item $R$ is regular.
-
     \item $R$ has finite global dimension.
-
     \item $\projdim k < \infty$
-
   \end{enumerate}
-
 \end{theorem}
 
-
-
 \begin{proof}
-
   \uses{
     lem:reg_implies_finite_global,
     thm:ferrand_vasconcelos,
@@ -632,62 +522,28 @@ We follow Bruns-Herzog almost exclusively.
   conclude regularity.
 
   \ref{thm:ferrand_vasconcelos}.
-
 \end{proof}
-
-
 
 \begin{theorem}[Regular Rings Localize, BH 2.2.9]
 
   \label{thm:regular_rings_localize}
-
   Let $R$ be a regular local ring, and let
-
   $\mathfrak{p}$ be a prime ideal in $R$.
-
   Then $R_\mathfrak{p}$ is a regular local ring.
-
 \end{theorem}
-
-
 
 % probably we want to carry around the dimension n
 
-
-
 \begin{proof}
-
   \uses{thm:auslander_buchsbaum_serre,prop:existence_min_free_resl,lem:loczn_of_resl_is_resl,lem:min_resl_has_min_length}
-
   By Auslander-Buchsbaum-Serre, it is enough to show that 
-
   $R_\mathfrak{p} / \mathfrak{p}R_\mathfrak{p}$ has finite projective dimension.
-
   Also by Auslander-Buchsbaum-Serre, we know that 
-
   $k = R / \mathfrak{m}$ has finite projective dimension.
-
   Then $k$ has a minimal free resolution of finite length by
-
   Proposition \ref{existence_min_free_resl}.
-
   By the fact that the loclization of a resolution is a resolution,
-
   We get a finite resolution for 
-
   $R_\mathfrak{p} / \mathfrak{p}R_\mathfrak{p}$,
-
   thus any minimal resolution is also finite, giving us what we want.
-
 \end{proof}
-
-
-
-% Uncomment the following two lines if you want to have a bibliography
-
-%\bibliographystyle{apalike}
-
-%\bibliography{document}
-
-
-
