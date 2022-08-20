@@ -56,11 +56,13 @@ The following lemma is used by user6:
   I think this uses the Corollary 2.8 version of Nakayama's Lemma
 \end{proof}
 
-\subsection{Regular Varieties}
+\subsection{Regular Rings}
 
-There are two (very closely related)
-notions of ``smoothness'' given in Vakil Chatper 12.
-The one we need for this proof is ``regularity''.
+We summarize things which have been proved in the previous section.
+
+%There are two (very closely related)
+%notions of ``smoothness'' given in Vakil Chatper 12.
+%The one we need for this proof is ``regularity''.
 
 \begin{proposition} \label{prop:regular_def_equiv}
    \uses{cor:local_maximal_gereating_set_basis_residue}
@@ -100,34 +102,34 @@ The one we need for this proof is ``regularity''.
 	\(\dim \mathfrak{m} / \mathfrak{m}^{2} \leq n\) as desired.
 \end{proof}
 
-The part that is needed in user6's proof is (b) in the proposition.
-I believe this is also what is used in Hartshorne II.8.17
+%The part that is needed in user6's proof is (b) in the proposition.
+%I believe this is also what is used in Hartshorne II.8.17
+%
+%\begin{definition} \label{def:regular}
+%	Let \(R\) be a noetherian local ring.
+%	\(R\) is \textit{regular} if one (equivalently, all)
+%	of the conditions from the previous proposition holds.
+%\end{definition}
 
-\begin{definition} \label{def:regular}
-	Let \(R\) be a noetherian local ring.
-	\(R\) is \textit{regular} if one (equivalently, all)
-	of the conditions from the previous proposition holds.
-\end{definition}
+%The following lemma is used in the proof that the 
+%conormal sequence is exact on the left by both 
+%Hartshorne and user6.
 
-The following lemma is used in the proof that the 
-conormal sequence is exact on the left by both 
-Hartshorne and user6.
 
-\begin{lemma} \label{lem:regular_localizes}
-   \uses{def:regular}
+\begin{lemma} \label{thm:regular_rings_localize}
 	The localization of a regular local ring at (read: away from) a prime 
 	ideal is a regular local ring.
 \end{lemma}
 
-\begin{proof}
-	This proof uses two things
-	\begin{itemize}
-		\item Auslander-Buchsbaum-Serre
-		\item The localization of a projective resolution
-			is a projective resolution
-			(follows from the fact that localizations are exact)
-	\end{itemize}
-\end{proof}
+%\begin{proof}
+%	This proof uses two things
+%	\begin{itemize}
+%		\item Auslander-Buchsbaum-Serre
+%		\item The localization of a projective resolution
+%			is a projective resolution
+%			(follows from the fact that localizations are exact)
+%	\end{itemize}
+%\end{proof}
 
 
 \subsection{Misc Commutative Algebra}
@@ -367,17 +369,205 @@ The following is quite important.
 	in Lean.
 \end{proof}
 
-\begin{itemize}
-    \item affine conormal exact sequence
-		(algebraic computation using the definition)
-	\item define the sheaf of kahler differentials
-		(globalizing the previous)
-	\item sheafy conormal exact sequence
-		(globalizing the previous)
-\end{itemize}
+\begin{proposition}
+  \label{prop:conormal_seq_local}
+  \uses{lem:kahler_diff_module_univ_prop}
+  Let $B$ be an $A$-algebra, and $I$ some
+  ideal of $B$.
+  Let $C \colonequals B / I$.
+  We have the following right-exact sequence:
+  \[
+    I / I^2 \to
+    \Omega_{B/A} \otimes_B C \to
+    \Omega_{C/A} \to 0
+  \]
+\end{proposition}
+
+\begin{proof}
+
+\end{proof}
+
+\begin{corollary}
+  [Hartshorne II.8.5]
+  \label{cor:kahler_diff_fin_gen}
+  If $B$ is a finitely generated 
+  $A$-algebra or a localization thereof,
+  then $\Omega_{B/A}$ is finitely generated
+  as a $B$-module.
+\end{corollary}
+
+\begin{proof}
+  \uses{
+    lem:kahler_diff_commutes_with_loczn,
+    prop:conormal_seq_local,
+  }
+  Calculate $\Omega_{B/A}$ for the 
+  case of a polynomial ring.
+  Then use the conormal sequence
+  to pass to the quotient.
+  Finally, Kahler differentials 
+  commute with localization.
+\end{proof}
 
 
-We will need ideal sheaves for this.
+\begin{corollary}
+  \label{cor:kahler_diff_sheaf_coh}
+  The sheaf of kahler differentials is
+  coherent.
+\end{corollary}
+
+\begin{proof}
+  \uses{
+    lem:kahler_diff_sheaf_quasi_coh,
+    cor:kahler_diff_fin_gen
+  }
+  Put together \ref{cor:kahler_diff_fin_gen}
+  and \ref{lem:kahler_diff_sheaf_quasi_coh} 
+\end{proof}
+
+\begin{proposition}
+  \label{prop:conormal_seq_sheaf}
+  \uses{prop:conormal_seq_local}
+  There is a sheafy exact sequence globalizing 
+  \ref{prop:conormal_seq_local}
+\end{proposition}
+
+\begin{proof}
+  \uses{lem:kahler_diff_commutes_with_loczn}
+  We will need ideal sheaves for this.
+\end{proof}
+
+
+\begin{lemma}
+  \label{lem:alg_clsd_is_perf}
+  An algebraically closed field is perfect.
+\end{lemma}
+
+\begin{proof}
+  Is this already in lean?
+\end{proof}
+
+\begin{definition}
+  \label{def:sep_gen}
+  A field extension $K/k$ is 
+  \textit{separably generated}
+  if there exists a trancendence basis
+  $\{x_i\}$
+  for $K/k$ such that
+  $K$ is a separable algebraic extension
+  of $k(\{x_i\})$.
+\end{definition}
+
+\begin{lemma}
+  \label{lem:perf_is_sep_gen}
+  Let $K/k$ be a perfect field extension.
+  Then $K$ is separably generated over $k$.
+\end{lemma}
+
+\begin{lemma}
+  [Hartshorne II.8.6A]
+  \label{lem:kahler_diff_field_extension}
+  \uses{def:sep_gen}
+  Let $K$ be a finitely generated (as an algebra)
+  field extension of $k$.
+  Then $\trdeg K/k \leq \dim \Omega_{K/k}$,
+  with equality 
+  if (and only if) $K$ is separably
+  generated over $k$.
+\end{lemma}
+
+\begin{theorem}
+	[Hartshorne II.8.7]
+	\label{thm:local_conormal_isom_kahler_tensor_residue}
+	\uses{
+    lem:explicit_kahler_diff_free_quotient,
+    prop:conormal_seq_local,
+  }
+	Let \((B,\mathfrak{m},k)\) be a local ring 
+	which contains a field \(k\) 
+	isomorphic to its residue field
+	% is this the right assumption?
+	% should it really be equal characteristic?
+	Then the map 
+	\(\mathfrak{m} / \mathfrak{m}^{2} \to \Omega_{B / k} \otimes_{B} k\)
+	which is the first map in the 
+	conormal right-exact sequence
+	is an isomorphism.
+\end{theorem}
+
+\begin{proof}
+  %TODO
+\end{proof}
+
+\begin{lemma}
+  [Hartshorne II.8.9]
+  \label{lem:local_special_and_general_same_dim_implies_free}
+  Let $A$ be a noetherian local integral domain,
+  with residue field $k$ and 
+  quotient field $K$.
+  If $M$ is a finitely generated $A$-module
+  and 
+  $\dim_k M \otimes_A k = \dim_K M \otimes_A K = r$,
+  then $M$ is free of rank $r$.
+\end{lemma}
+
+\begin{proof}
+  \uses{cor:local_maximal_generating_set_basis_residue}
+\end{proof}
+
+\begin{theorem}
+	[Hartshorne II.8.8]
+	\label{thm:reg_loc_iff_free_kahler_diff_mod}
+	Let \((B,\mathfrak{m},k)\) be a local ring of
+	equal characteristic.
+	% is this the correct assumption?
+	% should it really be that it contains a field isomorphic to the residue field?
+	In addition, assume that
+	\(k\) is a perfect field,
+	and that \(B\) is a localization of
+	a finitely generatd \(k\)-algebra.
+	Then \(\Omega_{B / k}\) is a free \(B\)-module
+	of rank equal to the dimension of \(B\) 
+	if and only if \(B\) is a regular local ring.
+
+\end{theorem}
+
+\begin{proof}
+  \uses{
+    lem:kahler_diff_commutes_with_loczn,
+    prop:regular_def_equiv,
+    lem:kahler_diff_field_extension,
+    lem:alg_clsd_is_perf,
+    lem:perf_is_sep_gen,
+    lem:reg_int_dom,
+    prop:conormal_seq_local,
+    cor:kahler_diff_fin_gen,
+    lem:local_special_and_general_same_dim_implies_free,
+    thm:local_conormal_isom_kahler_tensor_residue,
+  }
+  This proof uses quite a few things.
+\end{proof}
+
+
+\begin{theorem}
+  [Hartshorne II.8.15]
+  \label{thm:regular_implies_kahler_diff_free}
+  Let \(X\) be an irreducible separated scheme of finite type 
+  over an algebraically closed field \(k\).
+  Then \(\Omega_{X / k}\) is a locally free
+  sheaf of rank \(\dim X\) if and only if 
+  \(X\) is regular.
+\end{theorem}
+
+\begin{proof}
+  \uses{
+    thm:reg_loc_iff_free_kahler_diff_mod,
+    thm:regular_rings_localize,
+    cor:fintype_stalk_free_implies_locally_free,
+  }
+
+
+\end{proof}
 
 
 %\subsection{Characteristic}
@@ -482,54 +672,7 @@ We will need ideal sheaves for this.
 
 %\subsection{Noetherian Schemes}
 
-%\begin{theorem}
-%	[Hartshorne II.8.7]
-%	\label{thm:regular_implies_conormal_exact}
-%	\uses{
-%	  thm:stalk_free_implies_locally_free,
-%	  lem:kahler_diff_sheaf_quasi_coh,
-%	  lem:regular_localizes,
-%	  lem:fin_gen_proj_over_local_is_free
-%  }
-%	Let \((B,\mathfrak{m},k)\) be a local ring 
-%	which contains a field \(k\) 
-%	isomorphic to its residue field
-%	% is this the right assumption?
-%	% should it really be equal characteristic?
-%	Then the map 
-%	\(\mathfrak{m} / \mathfrak{m}^{2} \to \Omega_{B / k} \otimes_{B} k\)
-%	which is the first map in the 
-%	conormal right-exact sequence
-%	is an isomorphism.
-%\end{theorem}
 
-
-%\begin{theorem}
-%	[Hartshorne II.8.8]
-%	Let \((B,\mathfrak{m},k)\) be a local ring of
-%	equal characteristic.
-%	% is this the correct assumption?
-%	% should it really be that it contains a field isomorphic to the residue field?
-%	In addition, assume that
-%	\(k\) is a perfect field,
-%	and that \(B\) is a localization of
-%	a finitely generatd \(k\)-algebra.
-%	Then \(\Omega_{B / k}\) is a free \(B\)-module
-%	of rank equal to the dimension of \(B\) 
-%	if and only if \(B\) is a regular local ring.
-%
-%\end{theorem}
-%
-%
-%\begin{theorem}
-%	[Hartshorne II.8.15]
-%	Let \(X\) be an irreducible separated scheme of finite type 
-%	over an algebraically closed field \(k\).
-%	Then \(\Omega_{X / k}\) is a locally free
-%	sheaf of rank \(\dim X\) if and only if 
-%	\(X\) is regular.
-%\end{theorem}
-%
 %
 %\begin{theorem}
 %	[Hartshorne II.8.17]
@@ -807,7 +950,7 @@ Let $|X|$ be a topological space.
 \end{definition}
 
 \begin{lemma}
-  \label{lem:irred_cap_closed_is_irred_top_space}
+  \label{lem:irred_cap_open_is_irred_top_space}
   \uses{def:irred_top_space}
   Let $X$ be a suitable (noetherian? irred? zariski?)
   topological space. 
@@ -848,14 +991,7 @@ topological space.
 \end{proof}
 
 \subsection{Left-exactness of conormal bundle}
-m
-\begin{theorem}
-  \label{thm:regular_implies_kahler_diff_free}
-  \uses{lem:kahler_diff_sheaf_quasi_coh}
-  Let $X$ be a regular variety over a field $k$.
-  Then $\Omega_{X/k}$ is a locally free sheaf of
-  rank $\dim X$.
-\end{theorem}
+
 
 \begin{lemma}
   \label{lem:reg_subvar_conormal_locally_free}
@@ -868,9 +1004,9 @@ m
 
 \begin{proof}
   \uses{
-    lem:irred_cap_closed_is_irred_top_space,
+    lem:irred_cap_open_is_irred_top_space,
     prop:scheme_definullstellensatz,
-    lem:regular_localizes,
+    thm:regular_rings_localize,
     prop:regular_def_equiv,
     cor:fintype_stalk_free_implies_locally_free,
   }
@@ -878,7 +1014,7 @@ m
   Let $U = \Spec R$ be an affine open neighborhood of $y$ in $X$.
   
   4. $U \cap Y$ is also affine and irreducible ($Y$ is irred)
-     By Lemmas \ref{lem:irred_cap_closed_is_irred_top_space}
+     By Lemmas \ref{lem:irred_cap_open_is_irred_top_space}
 
   5. As $U \cap Y$ is irreducibe, it corresponds to a prime ideal
      $\mathfrak{p}$.
@@ -889,7 +1025,7 @@ m
      Then $\mathfrak{m} / \mathfrak{m}^2$ is a free 
      $R_\mathfrak{p} / \mathfrak{m}$ module of rank
      $\dim R_\mathfrak{p} = \text{ht} P = n-s$, where $n = \dim X$.
-     By \ref{lem:regular_localizes} and \ref{prop:regular_def_equiv}
+     By \ref{thm:regular_rings_localize} and \ref{prop:regular_def_equiv}
 
 
   7. Thus, by Hartshorne II.5.7 
