@@ -28,9 +28,9 @@ jobs:
 
       - name: Link and fetch mathlib
         run: |
-          leanproject get leanprover-community/lean-liquid
-          ln -s lean-liquid project
-          cd project && leanproject get-m && scripts/fetch_olean_cache.sh && cd ..
+          leanproject get jjgarzella/adjunction_formula
+          ln -s adjunction_formula project
+          ( cd project && leanproject get-m )
           inv decls
 
       - name: Install Leanblueprint and generate web in tex env
@@ -39,12 +39,14 @@ jobs:
           run: |
             apk update
             apk add --update make py3-pip git
-            git config --global --add safe.directory `pwd`/lean-liquid
+            git config --global --add safe.directory `pwd`/adjunction_formula
             python3 -m pip install --upgrade pip requests wheel
             apk add pkgconfig graphviz graphviz-dev gcc musl-dev && \
             python3 -m pip install pygraphviz --global-option=build_ext --global-option="-L/usr/lib/graphviz/" --global-option="-R/usr/lib/graphviz/"
-            python3 -m pip install invoke git+https://github.com/plastex/plastex.git git+https://github.com/PatrickMassot/leanblueprint.git 
-            inv pdf; cp print/blueprint.bbl src/web.bbl; inv qweb
+            #python3 -m pip install invoke git+https://github.com/plastex/plastex.git git+https://github.com/PatrickMassot/leanblueprint.git
+            python3 -m pip install invoke git+https://github.com/plastex/plastex.git git+https://github.com/mpenciak/noleanblueprint.git
+            inv qweb
+            inv qpdf
             cp print/blueprint.pdf web/
 
       - name: deploy
