@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+  MathJax = { 
+    tex: {
+		    inlineMath: [['$','$'], ['\\(','\\)']]
+	} }
+</script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<meta name="generator" content="plasTeX" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Blueprint for the Adjunction Formula: Left-exactness of conormal bundle</title>
+<link rel="next" href="sect0017.html" title="Main Proof" />
+<link rel="prev" href="sect0015.html" title="Irreducible Schemes" />
+<link rel="up" href="sect0009.html" title="Adjunction Formula" />
+<link rel="stylesheet" href="styles/theme-white.css" />
+<link rel="stylesheet" href="styles/amsthm.css" />
+</head>
+
+<body>
+<header>
+<svg  id="toc-toggle" class="icon icon-list-numbered "><use xlink:href="symbol-defs.svg#icon-list-numbered"></use></svg>
+<h1 id="doc_title"><a href="index.html">Blueprint for the Adjunction Formula</a></h1>
+</header>
+
+<div class="wrapper">
+<nav class="toc">
+<ul class="sub-toc-0">
+<li class="">
+  <a href="sect0001.html"><span class="toc_ref">1</span> <span class="toc_entry">Commutative Algebra Preliminaries</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0002.html"><span class="toc_ref">1.1</span> <span class="toc_entry">Projective Resolutions</span></a>
+ </li>
+<li class="">
+  <a href="sect0003.html"><span class="toc_ref">1.2</span> <span class="toc_entry">Dimension Theory</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html"><span class="toc_ref">1.3</span> <span class="toc_entry">Regular elements and sequences</span></a>
+ </li>
+<li class="">
+  <a href="sect0005.html"><span class="toc_ref">1.4</span> <span class="toc_entry">Associated Primes</span></a>
+ </li>
+<li class="">
+  <a href="sect0006.html"><span class="toc_ref">1.5</span> <span class="toc_entry">Depth and Regular Sequences</span></a>
+ </li>
+<li class="">
+  <a href="sect0007.html"><span class="toc_ref">1.6</span> <span class="toc_entry">Auslander-Buchsbaum Formula</span></a>
+ </li>
+<li class="">
+  <a href="sect0008.html"><span class="toc_ref">1.7</span> <span class="toc_entry">Proof of Auslander-Buchbaum-Serre</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class=" active">
+  <a href="sect0009.html"><span class="toc_ref">2</span> <span class="toc_entry">Adjunction Formula</span></a>
+  <span class="expand-toc">▼</span>
+  <ul class="sub-toc-1 active">
+     <li class="">
+  <a href="sect0010.html"><span class="toc_ref">2.1</span> <span class="toc_entry">Nakayama’s Lemma and Corollaries</span></a>
+ </li>
+<li class="">
+  <a href="sect0011.html"><span class="toc_ref">2.2</span> <span class="toc_entry">Regular Rings</span></a>
+ </li>
+<li class="">
+  <a href="sect0012.html"><span class="toc_ref">2.3</span> <span class="toc_entry">Misc Commutative Algebra</span></a>
+ </li>
+<li class="">
+  <a href="sect0013.html"><span class="toc_ref">2.4</span> <span class="toc_entry">Kahler differentials</span></a>
+ </li>
+<li class="">
+  <a href="sect0014.html"><span class="toc_ref">2.5</span> <span class="toc_entry">Coherent Sheaves and Stalks</span></a>
+ </li>
+<li class="">
+  <a href="sect0015.html"><span class="toc_ref">2.6</span> <span class="toc_entry">Irreducible Schemes</span></a>
+ </li>
+<li class=" active current">
+  <a href="sect0016.html"><span class="toc_ref">2.7</span> <span class="toc_entry">Left-exactness of conormal bundle</span></a>
+ </li>
+<li class="">
+  <a href="sect0017.html"><span class="toc_ref">2.8</span> <span class="toc_entry">Main Proof</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li ><a href="dep_graph_section_1.html">Section 1 graph</a></li>
+<li ><a href="dep_graph_section_2.html">Section 2 graph</a></li>
+</ul>
+</nav>
+
+<div class="content">
+<div class="content-wrapper">
+
+
+<div class="main-text">
+<h2 id="a0000000017">2.7 Left-exactness of conormal bundle</h2>
+<p><div class="lemma_thmwrapper" id="lem:reg_subvar_conormal_locally_free">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">2.7.1</span>
+    <div class="thm_icons">
+    <a class="icon proof" href="sect0016.html#lem:reg_subvar_conormal_locally_free">#</a>
+    <a class="icon proof" href="sect0016.html#a0000000067"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+
+  </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p> Let \(X\) be a regular variety, and let \(Y\) be a regular subvariety. Let \(\mathcal{I}\) be the ideal sheaf of \(Y\). Then \(\mathscr {I} / \mathscr {I}^{2}\) is a locally free sheaf of rank \(\dim X - \dim Y\). </p>
+
+  </div>
+</div> </p>
+<div class="proof_wrapper" id="a0000000067">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▼</span>
+  </div>
+  <div class="proof_content">
+  
+<p>Let \(U = \operatorname {Spec}R\) be an affine open neighborhood of \(y\) in \(X\). </p>
+<p>4. \(U \cap Y\) is also affine and irreducible (\(Y\) is irred) By Lemmas <a href="sect0015.html#lem:irred_cap_open_is_irred_top_space">2.6.2</a> </p>
+<p>5. As \(U \cap Y\) is irreducibe, it corresponds to a prime ideal \(\mathfrak {p}\). By Lemma <a href="sect0015.html#prop:scheme_definullstellensatz">2.6.5</a>. </p>
+<p>6. We work in the local ring of \(X\) at \(\mathfrak {p}\), which is \(R_{\mathfrak {p}}\). Let \(\mathfrak {m}\) be the maximal ideal \(\mathfrak {p} R_{\mathfrak {p}}\). Then \(\mathfrak {m} / \mathfrak {m}^2\) is a free \(R_{\mathfrak {p}} / \mathfrak {m}\) module of rank \(\dim R_{\mathfrak {p}} = \text{ht} P = n-s\), where \(n = \dim X\). By <a href="sect0011.html#thm:regular_rings_localize">2.2.2</a> and <a href="sect0011.html#prop:regular_def_equiv">2.2.1</a> </p>
+<p>7. Thus, by Hartshorne II.5.7 (<a href="sect0014.html#cor:fintype_stalk_free_implies_locally_free">2.5.7</a>) we have some \(f\) not in \(\mathfrak {p}\) such that \((\mathfrak {p} / \mathfrak {p}^2)_f\) is free of rank \(r\). </p>
+
+  </div>
+</div>
+<p><div class="theorem_thmwrapper" id="thm:regular_implies_conormal_exact">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">2.7.2</span>
+    <div class="thm_icons">
+    <a class="icon proof" href="sect0016.html#thm:regular_implies_conormal_exact">#</a>
+    <a class="icon proof" href="sect0016.html#a0000000068"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+
+  </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p> The conormal sequence is exact on the left. </p>
+
+  </div>
+</div> </p>
+<div class="proof_wrapper" id="a0000000068">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▼</span>
+  </div>
+  <div class="proof_content">
+  
+<p>1. \(Y\) is regular, therefore \(\Omega _{Y/k}\) is free of rank \(s = \dim Y\). Likewise, \(X\) is regular and \(\Omega _{X/k}\) is free of rank \(n = \dim X\). By Theorem <a href="sect0013.html#thm:regular_implies_kahler_diff_free">2.4.21</a> </p>
+<p>2. We have the conormal exact sequence </p>
+<p>3. Take the stalk of this sequence at an arbitrary closed point \(y \in Y\). By Theorem ?? </p>
+<p>3a. The stalk-taking/localization pulls into the \(\mathcal{I} / \mathcal{I}^2\). By Corollary <a href="sect0014.html#cor:stalk_preserves_quotients">2.5.4</a> </p>
+<p>3b. The stalk-taking/localization pulls into the restriction/tensor product in the middle of the sequence By Lemma <a href="sect0014.html#lem:stalks_preserve_colimits">2.5.2</a> (tensor is a colimit, in fact a pushout). </p>
+<p>Steps 4-7: Apply the previous lemma to conclude that \(\mathscr {I} / \mathscr {I}^{2}\) is locally free. </p>
+<p>Now, we have the conormal exact sequence localized at \(y\): </p>
+<div class="displaymath" id="a0000000069">
+  \[  \mathcal{I}_y / \mathcal{I}^2_y \to \Omega _{X/k,y} \otimes _{\mathcal{O}_{X,y}} \mathcal{O}_{Y,y} \to \Omega _{Y/k,y} \to 0  \]
+</div>
+<p>8. The module in the middle of the (localized) exact sequence is free as it is the localization of a free module. </p>
+<p>8a. First, we see that \(\Omega _{X/k} \otimes _{\mathcal{O}_X} \mathcal{O}_Y\) is a free module, first by using part 1 to see that \(\Omega _X\) is free, then using that tensor products commute with direct sums to reduce to the case of \(\mathcal{O}_X\), and finally using the identity property of the tensor product. (tensor product identity property will need to be proved, but it’s not currently written down) </p>
+<p>8b. Then, we use the fact that localization pulls in/out of the construction (3b). </p>
+<p>Let \(u\) be the surjective map in the (localized) conormal exact sequence. </p>
+<p>9. Then \(\operatorname {Ker}u\) is a projective module over \(R_{\mathfrak {p}}\), as the exact sequence </p>
+<div class="displaymath" id="a0000000070">
+  \[  0 \to \operatorname {Ker}u \to \Omega _{X/k,y} \otimes _{\mathcal{O}_{X,y}} \mathcal{O}_{Y,y} \to \Omega _{Y/k,y} \to 0  \]
+</div>
+<p> splits (both of the second components are free). By <a href="sect0012.html#lem:finite_free_surj_splits">2.3.1</a> </p>
+<p>10. \(\operatorname {Ker}u\) is a (finitely generated) projective module over a local ring, it is free. By <a href="sect0010.html#lem:fin_gen_proj_over_local_is_free">2.1.3</a> </p>
+<p>11. By the additivity of rank on exact sequences, \(\operatorname {Ker}u\) has rank \(n-s\). By <a href="sect0012.html#lem:rank_additive_exact_seq">2.3.2</a> </p>
+<p>12. The first map of the localized conormal exact sequence is a surjection from \(\mathcal{I}_y / \mathcal{I}^2_y\) and \(\operatorname {Ker}u\). Both of these are free modules of rank \(n-s\). By Nakayama’s lemma (the endomorphism from free to free corollary), this is an isomoprhism. By <a href="sect0010.html#lem:surj_endo_is_isom">2.1.4</a> </p>
+<p>13. Thus, on stalks the conormal sequence is exact on the left, so it is exact globally. By Theorem <a href="sect0014.html#thm:stalk_exact_iff_sheaf_exact">2.5.3</a>. </p>
+
+  </div>
+</div>
+
+</div> <!--main-text -->
+</div> <!-- content-wrapper -->
+</div> <!-- content -->
+</div> <!-- wrapper -->
+
+<nav class="prev_up_next">
+  <a href="sect0015.html" title="Irreducible Schemes"><svg  class="icon icon-arrow-left "><use xlink:href="symbol-defs.svg#icon-arrow-left"></use></svg>
+</a>
+  <a href="sect0009.html" title="Adjunction Formula"><svg  class="icon icon-arrow-up "><use xlink:href="symbol-defs.svg#icon-arrow-up"></use></svg>
+</a>
+  <a href="sect0017.html" title="Main Proof"><svg  class="icon icon-arrow-right "><use xlink:href="symbol-defs.svg#icon-arrow-right"></use></svg>
+</a>
+</nav>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/plastex.js"></script>
+<script type="text/javascript" src="js/svgxuse.js"></script>
+</body>
+</html>

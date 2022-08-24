@@ -1,0 +1,904 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dependency graph</title>
+  <meta name="generator" content="plasTeX" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles/theme-white.css" />
+  <link rel="stylesheet" href="styles/dep_graph.css" />
+  
+  <script type="text/x-mathjax-config">
+  
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+  
+  </script>
+
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">  </script>
+
+
+</head>
+
+<body>
+<header>
+  <a class="toc" href="index.html">Home</a>
+  <h1 id="doc_title">Dependencies</h1>
+</header>
+<div class="wrapper">
+<div class="content">
+  <div id="Legend">
+    <span id="legend_title" class="title">Legend
+    <div class="btn">
+       <div class="bar"></div>
+       <div class="bar"></div>
+       <div class="bar"></div>
+    </div></span> 
+    <dl class="legend">
+      <dt>Boxes</dt><dd>definitions</dd>
+      <dt>Ellipses</dt><dd>theorems and lemmas</dd>
+      <dt>Blue border</dt><dd>the <em>statement</em> of this result is ready to be formalized; all prerequisites are done</dd>
+      <dt>Blue background</dt><dd>the <em>proof</em> of this result is ready to be formalized; all prerequisites are done</dd>
+      <dt>Green border</dt><dd>the <em>statement</em> of this result is formalized</dd>
+      <dt>Green background</dt><dd>the <em>proof</em> of this result is formalized</dd>
+    </dl>
+  </div>
+    <div id="graph"></div>
+<div id="statements">
+
+    
+    <div class="dep-modal-container" id="def:assoc_primes_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="def:assoc_primes" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">1.4.3</span></div>
+    <div class="thm_thmcontent"><p>  The set \(\text{Assoc}_R (M)\) is the set of primes satisfying the preivious proposition </p>
+</div>
+
+    <a class="latex_link" href="sect0005.html#def:assoc_primes">LaTeX</a>
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="def:depth_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="def:depth" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">1.5.1</span></div>
+    <div class="thm_thmcontent"><p> The depth of a module \(M\) is . . . </p>
+</div>
+
+    <a class="latex_link" href="sect0006.html#def:depth">LaTeX</a>
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="def:dim_module_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="def:dim_module" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">1.2.1</span></div>
+    <div class="thm_thmcontent"><p> The krull dimension of a module is the supremum of the lengths of chains of prime submodules. </p>
+</div>
+
+    <a class="latex_link" href="sect0003.html#def:dim_module">LaTeX</a>
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="def:free_resl_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="def:free_resl" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">1.1.2</span></div>
+    <div class="thm_thmcontent"><p>  A free resolution of \(M\) over \(R\) is a projective resolution whose components \(P^i\) are free. </p>
+</div>
+
+    <a class="latex_link" href="sect0002.html#def:free_resl">LaTeX</a>
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="def:globdim_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="def:globdim" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">1.1.8</span></div>
+    <div class="thm_thmcontent"><p>  The global dimension of a ring \(R\) is the supremum over all \(R\)-modules of \(\text{proj dim}M\). </p>
+</div>
+
+    <a class="latex_link" href="sect0002.html#def:globdim">LaTeX</a>
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="def:length_of_resl_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="def:length_of_resl" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">1.1.3</span></div>
+    <div class="thm_thmcontent"><p>  The length of a projective resolution \(P_\cdot \) is the highest \(i\) such that \(P^i\) is nonzero. If there exists no such \(i\), the length is infinity </p>
+</div>
+
+    <a class="latex_link" href="sect0002.html#def:length_of_resl">LaTeX</a>
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="def:projdim_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="def:projdim" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">1.1.4</span></div>
+    <div class="thm_thmcontent"><p>  Let \(M\) be an \(R\)-module. Then \(\text{proj dim}M\) is the minimum length of a projective resolution of \(M\). It lives in the set \(\mathbb {N} \cap \infty \). </p>
+</div>
+
+    <a class="latex_link" href="sect0002.html#def:projdim">LaTeX</a>
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="def:projv_resl_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="def:projv_resl" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">1.1.1</span></div>
+    <div class="thm_thmcontent"><p> Let \(R\) be a ring. Let \(M\) be an \(R\)-module. A projective resolution of \(M\) over \(R\) Is an exact sequence </p>
+<div class="displaymath" id="a0000000019">
+  \[  \ldots \to P^2 \to P^1 \to P^0 \to M \to 0  \]
+</div>
+<p>. That is to say, a projective resolution is a quasi-isomorphism of complexes between the inclusion of \(M\) into chain complexes over \(R\) (i.e. the complex which has \(M\) in degree zero, trivial everywhere else, with trivial maps) and a bounded—below complex whose components are projective \(R\)-modules. </p>
+</div>
+
+    <a class="latex_link" href="sect0002.html#def:projv_resl">LaTeX</a>
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="def:reg_elt_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="def:reg_elt" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">1.3.1</span></div>
+    <div class="thm_thmcontent"><p> Let \(M\) be an \(R\)-module. An element \(x \in R\) is \(M\)-regular if it does not annihilate any element in \(M\). In colon notation, it is non a member of the ideal \(( 0 : M )\). If \(x\) is an \(R\)-regular element, we simply say it is a regular element. </p>
+</div>
+
+    <a class="latex_link" href="sect0004.html#def:reg_elt">LaTeX</a>
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="def:reg_loc_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="def:reg_loc" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">1.3.5</span></div>
+    <div class="thm_thmcontent"><p> A local ring \(R\) is regular if the minimal number of generators of its maximal ideal is equal to the dimension of \(R\). </p>
+</div>
+
+    <a class="latex_link" href="sect0004.html#def:reg_loc">LaTeX</a>
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="def:reg_ring_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="def:reg_ring" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">1.3.6</span></div>
+    <div class="thm_thmcontent"><p>  A ring \(R\) is regular if \(R_{\mathfrak {p}}\) is regular for every \(\mathfrak {p} \in R\). </p>
+</div>
+
+    <a class="latex_link" href="sect0004.html#def:reg_ring">LaTeX</a>
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="def:reg_seq_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="def:reg_seq" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">1.3.3</span></div>
+    <div class="thm_thmcontent"><p>  Let \(M\) be an \(R\)-module. An \(M\)-regular sequence is a weak \(M\)-regular sequence such that \(M / (x_1, \ldots , x_n) M \neq 0\). If \(M = R\), we simply call this a regular sequence. </p>
+</div>
+
+    <a class="latex_link" href="sect0004.html#def:reg_seq">LaTeX</a>
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="def:ring_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="def:ring" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">1.2.2</span></div>
+    <div class="thm_thmcontent"><p> Krull dim of ring (prime ideals are prime submodules, might need to show this) </p>
+</div>
+
+    <a class="latex_link" href="sect0003.html#def:ring">LaTeX</a>
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="def:support_module_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="def:support_module" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">1.4.1</span></div>
+    <div class="thm_thmcontent"><p> The support of a module is the set of prime ideals \(\mathfrak {p} \subset R\) such that \(M_{\mathfrak {p}} \neq 0\). </p>
+</div>
+
+    <a class="latex_link" href="sect0005.html#def:support_module">LaTeX</a>
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="def:weak_reg_seq_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="def:weak_reg_seq" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">1.3.2</span></div>
+    <div class="thm_thmcontent"><p>  Let \(M\) be an \(R\)-module. Then a weak \(M\)-regular sequence is a sequence \(x_1, \ldots , x_n\) with \(x_i \in R\) for all \(i\), such that \(x_i\) is a \(M / (x_1, \ldots , x_{i-1}) M\)-regular element for all \(i\). If \(M = R\), we say that \(x_1, \ldots , x_n\) is a weak regular sequence. </p>
+</div>
+
+    <a class="latex_link" href="sect0004.html#def:weak_reg_seq">LaTeX</a>
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="lem:finite_resl_implies_finite_projdim_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="lem:finite_resl_implies_finite_projdim" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">1.1.5</span></div>
+    <div class="thm_thmcontent"><p>  If there exists a projective resolution of \(M\) with finite length, then \(\text{proj dim}M {\lt} \infty \). </p>
+</div>
+
+    <a class="latex_link" href="sect0002.html#lem:finite_resl_implies_finite_projdim">LaTeX</a>
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="lem:loczn_exact_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="lem:loczn_exact" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">1.1.9</span></div>
+    <div class="thm_thmcontent"><p> Localization by a multiplicative set is an exact functor. </p>
+</div>
+
+    <a class="latex_link" href="sect0002.html#lem:loczn_exact">LaTeX</a>
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="lem:loczn_of_resl_is_resl_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="lem:loczn_of_resl_is_resl" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">1.1.10</span></div>
+    <div class="thm_thmcontent"><p>  Let \(M\) be an \(R\)-module. Let \(S\) be a multiplicative set. Let \(\ldots \to A_2 \to A_1 \to A_0 \to M \to 0\) be a free resoltion of \(M\). Then \(\ldots S^{-1}(A_2) \to S^{-1}(A_1) \to S^{-1}(A_0) \to S^{-1}M \to 0\) is a free resolution of \(S^{-1}M\). </p>
+</div>
+
+    <a class="latex_link" href="sect0002.html#lem:loczn_of_resl_is_resl">LaTeX</a>
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="lem:min_resl_has_min_length_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="lem:min_resl_has_min_length" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">1.1.6</span></div>
+    <div class="thm_thmcontent"><p> Any resolution of \(M\) over \(R\) has length at least that of the minimal resolution. </p>
+</div>
+
+    <a class="latex_link" href="sect0002.html#lem:min_resl_has_min_length">LaTeX</a>
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="lem:module_assoc_maximal_tensor_free_summand_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="lem:module_assoc_maximal_tensor_free_summand" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">1.6.1</span></div>
+    <div class="thm_thmcontent"><p> BH 1.3.4 </p>
+</div>
+
+    <a class="latex_link" href="sect0007.html#lem:module_assoc_maximal_tensor_free_summand">LaTeX</a>
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="lem:projdim_preserved_quotient_reg_elt_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="lem:projdim_preserved_quotient_reg_elt" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">1.6.2</span></div>
+    <div class="thm_thmcontent"><p> BH 1.3.5 </p>
+</div>
+
+    <a class="latex_link" href="sect0007.html#lem:projdim_preserved_quotient_reg_elt">LaTeX</a>
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="lem:reg_implies_finite_global_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="lem:reg_implies_finite_global" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">1.7.1</span></div>
+    <div class="thm_thmcontent"><p>  Let \(R\) be a regular local ring. Then \(R\) has finite global dimension. That is, any finitely generated module \(R\) has finite projective dimension. </p>
+</div>
+
+    <a class="latex_link" href="sect0008.html#lem:reg_implies_finite_global">LaTeX</a>
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="lem:reg_int_dom_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="lem:reg_int_dom" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">1.3.8</span></div>
+    <div class="thm_thmcontent"><p>  Every regular ring is an integral domain. </p>
+</div>
+
+    <a class="latex_link" href="sect0004.html#lem:reg_int_dom">LaTeX</a>
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="prop:assoc_primes_def_equiv_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="prop:assoc_primes_def_equiv" style="display: none">
+    <div class="thm_thmheading">
+      <span class="proposition_thmcaption">
+      Proposition
+      </span>
+      <span class="proposition_thmlabel">1.4.2</span></div>
+    <div class="thm_thmcontent"><p> Let \(R\) a ring, and \(M\) an \(R\)-module. Let \(\mathfrak {p}\) be a prime ideal, then the following are equivalent: </p>
+<ol class="enumerate">
+  <li><p>\(\mathfrak {p} = \text {Ann}_R (m)\) for some element \(m \in M\). </p>
+</li>
+  <li><p>\(R / \mathfrak {p}\) embeds into \(M\). </p>
+</li>
+</ol>
+</div>
+
+    <a class="latex_link" href="sect0005.html#prop:assoc_primes_def_equiv">LaTeX</a>
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="prop:assoc_primes_in_support_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="prop:assoc_primes_in_support" style="display: none">
+    <div class="thm_thmheading">
+      <span class="proposition_thmcaption">
+      Proposition
+      </span>
+      <span class="proposition_thmlabel">1.4.4</span></div>
+    <div class="thm_thmcontent"><p> The associated primes of \(M\) are in the support of \(M\). </p>
+</div>
+
+    <a class="latex_link" href="sect0005.html#prop:assoc_primes_in_support">LaTeX</a>
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="prop:existence_min_free_resl_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="prop:existence_min_free_resl" style="display: none">
+    <div class="thm_thmheading">
+      <span class="proposition_thmcaption">
+      Proposition
+      </span>
+      <span class="proposition_thmlabel">1.1.7</span></div>
+    <div class="thm_thmcontent"><p>  There exists a free resolution \(F_\cdot \) of \(M\) such that length of \(F_\cdot \) is equal to the projective dimension of \(M\). </p>
+</div>
+
+    <a class="latex_link" href="sect0002.html#prop:existence_min_free_resl">LaTeX</a>
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="prop:reg_def_equiv_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="prop:reg_def_equiv" style="display: none">
+    <div class="thm_thmheading">
+      <span class="proposition_thmcaption">
+      Proposition
+      </span>
+      <span class="proposition_thmlabel">1.3.7</span></div>
+    <div class="thm_thmcontent"><p>  The following are equivalent Firstly, \(R\) is regular. Secondly, the zariski cotangent space is a vector space of dimension \(\dim R\). </p>
+</div>
+
+    <a class="latex_link" href="sect0004.html#prop:reg_def_equiv">LaTeX</a>
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="prop:reg_loc_maximal_reg_seq_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="prop:reg_loc_maximal_reg_seq" style="display: none">
+    <div class="thm_thmheading">
+      <span class="proposition_thmcaption">
+      Proposition
+      </span>
+      <span class="proposition_thmlabel">1.3.10</span></div>
+    <div class="thm_thmcontent"><p>  A local ring \(R\) is regular if and only if its maximal ideal is generated by a regular sequence. </p>
+</div>
+
+    <a class="latex_link" href="sect0004.html#prop:reg_loc_maximal_reg_seq">LaTeX</a>
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="prop:reg_quot_sys_param_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="prop:reg_quot_sys_param" style="display: none">
+    <div class="thm_thmheading">
+      <span class="proposition_thmcaption">
+      Proposition
+      </span>
+      <span class="proposition_thmlabel">1.3.9</span><span class="proposition_thmtitle">BH 2.2.4</span></div>
+    <div class="thm_thmcontent"><p>  Let \(R\) be a regular local ring. Then \(R / I\) is regular local if and only if \(I\) is generated by a (regular) system of parameters (I.e. a generating set for \(\mathfrak {m}\)). </p>
+</div>
+
+    <a class="latex_link" href="sect0004.html#prop:reg_quot_sys_param">LaTeX</a>
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="thm:auslander_buchsbaum_formula_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="thm:auslander_buchsbaum_formula" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">1.6.3</span></div>
+    <div class="thm_thmcontent"><p> depth + projdim = depth </p>
+</div>
+
+    <a class="latex_link" href="sect0007.html#thm:auslander_buchsbaum_formula">LaTeX</a>
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="thm:auslander_buchsbaum_serre_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="thm:auslander_buchsbaum_serre" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">1.7.3</span><span class="theorem_thmtitle">Auslander-Buchsbaum-Serre Criterion, BH 2.2.7</span></div>
+    <div class="thm_thmcontent"><p>  Let \((R,\mathfrak {m},k\) be a noetherian local ring. The following are equivalent: </p>
+<ol class="enumerate">
+  <li><p>\(R\) is regular. </p>
+</li>
+  <li><p>\(R\) has finite global dimension. </p>
+</li>
+  <li><p>\(\text{proj dim}k {\lt} \infty \) </p>
+</li>
+</ol>
+</div>
+
+    <a class="latex_link" href="sect0008.html#thm:auslander_buchsbaum_serre">LaTeX</a>
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="thm:ferrand_vasconcelos_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="thm:ferrand_vasconcelos" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">1.7.2</span><span class="theorem_thmtitle">Ferrand-Vasconcelos, BH 2.2.8</span></div>
+    <div class="thm_thmcontent">
+<p>Let \((R,\mathfrak {m},k)\) be a local noetherian ring. Let \(I\) be a nonzero ideal with finite projective dimension. If \(I / I^2\) is a free \(R\)-module, then \(I\) is generated by a regular sequence. </p>
+</div>
+
+    <a class="latex_link" href="sect0008.html#thm:ferrand_vasconcelos">LaTeX</a>
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="thm:reg_seq_part_of_sys_param_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="thm:reg_seq_part_of_sys_param" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">1.3.4</span></div>
+    <div class="thm_thmcontent"><p>  Any regular sequence is part of a system of parameters </p>
+</div>
+
+    <a class="latex_link" href="sect0004.html#thm:reg_seq_part_of_sys_param">LaTeX</a>
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="thm:regular_rings_localize_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="thm:regular_rings_localize" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">1.7.4</span><span class="theorem_thmtitle">Regular Rings Localize, BH 2.2.9</span></div>
+    <div class="thm_thmcontent"><p> Let \(R\) be a regular local ring, and let \(\mathfrak {p}\) be a prime ideal in \(R\). Then \(R_{\mathfrak {p}}\) is a regular local ring. </p>
+</div>
+
+    <a class="latex_link" href="sect0008.html#thm:regular_rings_localize">LaTeX</a>
+  </div>
+    
+      </div>
+    </div>
+</div>
+</div> <!-- content -->
+</div> <!-- wrapper -->
+<script src="js/jquery.min.js" type="text/javascript"></script>
+
+<script src="js/d3.min.js"></script>
+<script src="js/hpcc.min.js"></script>
+<script src="js/d3-graphviz.js"></script>
+
+<script type="text/javascript">
+const graphContainer = d3.select("#graph");
+const width = graphContainer.node().clientWidth;
+const height = graphContainer.node().clientHeight;
+
+
+graphContainer.graphviz({useWorker: true})
+    .width(width)
+    .height(height)
+    .fit(true)
+    .renderDot('strict digraph "" {	graph [bgcolor=transparent];	node [label="\N",		penwidth=1.8	];	edge [arrowhead=vee];	"def:reg_elt"	[color=blue,		label=reg_elt,		shape=box];	"def:weak_reg_seq"	[label=weak_reg_seq,		shape=box];	"def:reg_elt" -> "def:weak_reg_seq"	[style=dashed];	"lem:loczn_exact"	[color=blue,		label=loczn_exact,		shape=ellipse];	"lem:loczn_of_resl_is_resl"	[label=loczn_of_resl_is_resl,		shape=ellipse];	"lem:loczn_exact" -> "lem:loczn_of_resl_is_resl"	[style=dashed];	"lem:reg_int_dom"	[label=reg_int_dom,		shape=ellipse];	"prop:reg_quot_sys_param"	[color=blue,		label=reg_quot_sys_param,		shape=ellipse];	"lem:reg_int_dom" -> "prop:reg_quot_sys_param";	"prop:reg_loc_maximal_reg_seq"	[label=reg_loc_maximal_reg_seq,		shape=ellipse];	"lem:reg_int_dom" -> "prop:reg_loc_maximal_reg_seq";	"lem:module_assoc_maximal_tensor_free_summand"	[color=blue,		label=module_assoc_maximal_tensor_free_summand,		shape=ellipse];	"thm:auslander_buchsbaum_formula"	[color=blue,		label=auslander_buchsbaum_formula,		shape=ellipse];	"lem:module_assoc_maximal_tensor_free_summand" -> "thm:auslander_buchsbaum_formula";	"prop:existence_min_free_resl"	[label=existence_min_free_resl,		shape=ellipse];	"thm:regular_rings_localize"	[color=blue,		label=regular_rings_localize,		shape=ellipse];	"prop:existence_min_free_resl" -> "thm:regular_rings_localize";	"thm:ferrand_vasconcelos"	[label=ferrand_vasconcelos,		shape=ellipse];	"thm:auslander_buchsbaum_serre"	[color=blue,		label=auslander_buchsbaum_serre,		shape=ellipse];	"thm:ferrand_vasconcelos" -> "thm:auslander_buchsbaum_serre";	"lem:finite_resl_implies_finite_projdim"	[label=finite_resl_implies_finite_projdim,		shape=ellipse];	"def:assoc_primes"	[label=assoc_primes,		shape=box];	"lem:projdim_preserved_quotient_reg_elt"	[color=blue,		fillcolor="#a3d6ff",		label=projdim_preserved_quotient_reg_elt,		shape=ellipse,		style=filled];	"lem:projdim_preserved_quotient_reg_elt" -> "thm:auslander_buchsbaum_formula";	"def:projv_resl"	[color=blue,		label=projv_resl,		shape=box];	"def:free_resl"	[label=free_resl,		shape=box];	"def:projv_resl" -> "def:free_resl"	[style=dashed];	"def:length_of_resl"	[label=length_of_resl,		shape=box];	"def:projv_resl" -> "def:length_of_resl"	[style=dashed];	"def:reg_loc"	[color=blue,		label=reg_loc,		shape=box];	"def:reg_loc" -> "lem:reg_int_dom"	[style=dashed];	"def:reg_ring"	[label=reg_ring,		shape=box];	"def:reg_loc" -> "def:reg_ring"	[style=dashed];	"prop:reg_def_equiv"	[label=reg_def_equiv,		shape=ellipse];	"def:reg_loc" -> "prop:reg_def_equiv"	[style=dashed];	"def:reg_loc" -> "prop:reg_loc_maximal_reg_seq"	[style=dashed];	"prop:assoc_primes_in_support"	[color=blue,		label=assoc_primes_in_support,		shape=ellipse];	"thm:auslander_buchsbaum_serre" -> "thm:regular_rings_localize";	"def:globdim"	[label=globdim,		shape=box];	"lem:reg_implies_finite_global"	[label=reg_implies_finite_global,		shape=ellipse];	"def:globdim" -> "lem:reg_implies_finite_global"	[style=dashed];	"def:free_resl" -> "prop:existence_min_free_resl"	[style=dashed];	"def:reg_seq"	[label=reg_seq,		shape=box];	"def:weak_reg_seq" -> "def:reg_seq"	[style=dashed];	"prop:assoc_primes_def_equiv"	[color=blue,		label=assoc_primes_def_equiv,		shape=ellipse];	"prop:assoc_primes_def_equiv" -> "lem:module_assoc_maximal_tensor_free_summand";	"prop:assoc_primes_def_equiv" -> "def:assoc_primes"	[style=dashed];	"def:projdim"	[label=projdim,		shape=box];	"def:projdim" -> "prop:existence_min_free_resl"	[style=dashed];	"def:projdim" -> "thm:ferrand_vasconcelos"	[style=dashed];	"def:projdim" -> "lem:finite_resl_implies_finite_projdim"	[style=dashed];	"def:projdim" -> "def:globdim"	[style=dashed];	"def:length_of_resl" -> "def:projdim"	[style=dashed];	"def:dim_module"	[color=blue,		label=dim_module,		shape=box];	"def:reg_seq" -> "thm:ferrand_vasconcelos"	[style=dashed];	"thm:reg_seq_part_of_sys_param"	[label=reg_seq_part_of_sys_param,		shape=ellipse];	"def:reg_seq" -> "thm:reg_seq_part_of_sys_param"	[style=dashed];	"def:reg_seq" -> "prop:reg_loc_maximal_reg_seq"	[style=dashed];	"def:support_module"	[color=blue,		label=support_module,		shape=box];	"lem:loczn_of_resl_is_resl" -> "thm:regular_rings_localize";	"lem:reg_implies_finite_global" -> "thm:auslander_buchsbaum_serre";	"thm:reg_seq_part_of_sys_param" -> "prop:reg_loc_maximal_reg_seq";	"lem:min_resl_has_min_length"	[color=blue,		fillcolor="#a3d6ff",		label=min_resl_has_min_length,		shape=ellipse,		style=filled];	"lem:min_resl_has_min_length" -> "thm:regular_rings_localize";	"def:ring"	[color=blue,		label=ring,		shape=box];	"def:depth"	[color=blue,		label=depth,		shape=box];	"prop:reg_loc_maximal_reg_seq" -> "thm:auslander_buchsbaum_serre";}')
+    .on("end", interactive);
+
+clickNode = function() {
+  $("#statements div").hide()
+  var node_id = $('text', this).text();
+    console.log(node_id);
+  console.log('#'+node_id.replace(':', '\\:'));
+  $('.thm').hide();
+  $('#'+node_id.replace(':', '\\:')).show().children().show();
+}
+function interactive() {
+    $("span#legend_title").on("click", function () {
+           $(this).siblings('dl').toggle();
+        })
+
+    d3.selectAll('.node')
+        .attr('pointer-events', 'fill')
+        .on('click', function () {
+           var title = d3.select(this).selectAll('title').text().trim();
+           $('#statements > div').hide()
+           $('.thm').hide();
+           $('#'+title.replace(':', '\\:')+'_modal').show().children().show().children().show();
+           $('#statements').show()
+        });
+
+    d3.selectAll('.dep-closebtn').on('click', function() {
+        var modal =
+            d3.select(this).node().parentNode.parentNode.parentNode ;
+        d3.select(modal).style('display', 'none');
+    });
+}
+
+</script>
+
+</body>
+</html>
