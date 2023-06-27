@@ -1,4 +1,4 @@
-We develop some 
+adfe develop some 
 homological and element-wise machinery
 from Commutative Algebra, culminating 
 in the proof of the Auslander-Buchsbaum-Serre 
@@ -170,6 +170,15 @@ for each direction.
   to show this)
 \end{definition}
 
+\begin{theorem}
+  \label{thm:quotient_non_minimal_sub_dim_1}
+  Let $x \in R$ be an element which is not in any 
+  minimal prime ideal.
+  Then $\dim R / (x) \leq \dim R - 1$
+\end{theorem}
+
+\end{theorem}
+
 Other dimension theory necessary? Probably?
 
 \subsection{Regular elements and sequences}
@@ -209,16 +218,6 @@ Other dimension theory necessary? Probably?
   If $M = R$, we simply call this a regular sequence.
 \end{definition}
 
-\begin{theorem}
-  \label{thm:reg_seq_part_of_sys_param}
-  \uses{def:reg_seq}
-  Any regular sequence is part of a system of parameters
-\end{theorem}
-
-\begin{proof}
-  This depends on the notion of depth, a bunch of machinery
-  from BH chapter 1, and the definition of associated primes.
-\end{proof}
 
 \begin{definition}
   \label{def:reg_loc}
@@ -290,7 +289,14 @@ Other dimension theory necessary? Probably?
   $\dim R$ (need to account for the word ``system of parameters''.
 \end{proof}
 
-\subsection{Associated Primes}
+\subsection{Support Theory}
+
+\begin{definition}
+  \label{def:annihilator}
+  The annihilator of a module M is the ideal
+  of elements $r \in R$ such that $rm = 0$ for 
+  all $m \in M$.
+\end{definition}
 
 \begin{definition}
   \label{def:support_module}
@@ -298,6 +304,19 @@ Other dimension theory necessary? Probably?
   $\mathfrak{p} \ins R$ such that 
   $M_{\mathfrak{p}} \neq 0$.
 \end{definition}
+
+\begin{lemma}
+  \label{lem:annihilator_zero_locus_support}
+  \uses{def:annihilator,def:support_module}
+  The zero locus of the annihilator of a module
+  is the same as the support of that module.
+\end{lemma}
+
+\begin{proof}
+  omitted for now
+\end{proof}
+\subsection{Associated Primes}
+
 
 \begin{proposition}
   \label{prop:assoc_primes_def_equiv}
@@ -325,15 +344,44 @@ Other dimension theory necessary? Probably?
   support of $M$.
 \end{proposition}
 
+% Do we need other things about associated primes?
+% relation to primary decomposition?
+% associated primes are minimal?
+
+\begin{lemma}
+  \label{lem:assoc_prime_zero_divisor}
+  An element $x \in R$ is a zero-divisor iff
+  it is in an associated prime.
+  (geometrically, it vanishes at an associated point)
+\end{lemma}
+
+
+
 \subsection{Depth and Regular Sequences}
 
-This mostly follows Bruns-Herzog 1.2
+This mostly follows Bruns-Herzog 1.2.
+We are building up to Bruns-Herzog 1.2.12.
+
+Actually maybe we don't need depth??
 
 \begin{definition}
   \label{def:depth}
   The depth of a module $M$ is . . . 
 \end{definition}
 
+\begin{theorem}[BH 1.2.12]
+  \label{thm:reg_seq_part_of_sys_param}
+  \uses{def:reg_seq}
+  \uses{thm:quotient_non_minimal_sub_dim_1}
+  \uses{lem:assoc_prime_zero_divisor}
+  Any regular sequence is part of a system of parameters
+\end{theorem}
+
+\begin{proof}
+  %This depends on the notion of depth, a bunch of machinery
+  This is 
+  from BH chapter 1, and uses associated primes.
+\end{proof}
 
 \subsection{Auslander-Buchsbaum Formula}
 
