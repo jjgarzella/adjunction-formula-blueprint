@@ -29,6 +29,65 @@ for each direction.
 %      corollaries anywhere that 'nakayama' or 'Nakayama'
 %      appears in this document.
 
+
+\subsection{Nakayama's Lemma and Corollaries}
+
+\begin{lemma}[Nakayama's Lemma]
+  \label{lem:nakayama}
+  State Nakayama's Lemma here.
+\end{lemma}
+
+\begin{proof}
+  The proof of this is already in Mathlib
+\end{proof}
+
+\begin{corollary}
+  \label{cor:local_maximal_gereating_set_basis_residue}
+  \uses{lem:nakayama}
+  Let $(R,\mathfrak{m},k)$ be a local ring. 
+  Let $M$ be an $R$-module.
+  If the elements $x_1, \ldots, x_n$ are elements in
+  $M$ that form a basis in the projection 
+  $M / \mathfrak{m} M$, then $x_1, ldots, x_n$ generate $M$.
+\end{corollary}
+
+\begin{proof}
+  See Atiyah-MacDonald Corollary 2.8
+\end{proof}
+
+The following lemma is used by user6:
+
+\begin{lemma} \label{lem:fin_gen_proj_over_local_is_free}
+  \uses{cor:local_maximal_gereating_set_basis_residue}
+	A finitely generated projective module 
+	over a regular local ring is free
+\end{lemma}
+
+\begin{proof}
+	A proof of this theorem can be pieced together from this
+	stack exchange answer:
+	https://math.stackexchange.com/questions/3362463/projective-modules-over-local-rings-are-free-matsumuras-proof
+	This proof needs
+	\begin{itemize}
+		\item Nakayama's lemma
+		\item Equivalent definitions of projective modules
+	\end{itemize}
+\end{proof}
+
+\begin{lemma}
+  \label{lem:surj_endo_is_isom}
+  \uses{cor:local_maximal_gereating_set_basis_residue}
+  Let $f : M \to M$ be a surjection of modules 
+  (over a local ring?).
+  Then $f$ is an isomorphism.
+\end{lemma}
+
+\begin{proof}
+
+  I think this uses the Corollary 2.8 version of Nakayama's Lemma
+\end{proof}
+
+
 \subsection{Projective Resolutions}
 
 \begin{definition}
@@ -156,28 +215,218 @@ for each direction.
 
 \subsection{Dimension Theory}
 
+A dimension theory normally takes the form of 
+a theorem which says that two notions of dimension
+are the same. 
+
+Following the Appendix of Bruns-Herzog, we will use two 
+notions, one related to the
+\textit{lengths a systems of parameters} and one 
+related to the \textit{heights of prime ideals}. 
+We have not defined these terms, so we will do so first, and then
+prove out theorem.
+
+As our main tool, we use Krull's Principal Ideal Theorem
+(aka the Hauptidealsatz). 
+One can also use Hilbert Polynomials, see Atiyah-MacDonald.
+
 \begin{definition}
-  \label{def:dim_module}
-  The krull dimension of a module 
-  is the supremum of the lengths
-  of chains of prime submodules.
+  \label{def:height_prime_ideal}
+  Let $R$ be a ring, and $\mathfrak{p}$
+  be a prime ideal in $R$.
+  Then the height of $\mathfrak{p}$ is the sup of
+  the lengths of chains
+  \[
+    \mathfrak{p} = \mathfrak{p}_0 \supset \mathfrak{p}_1 \supset \dots \supset \mathfrak{p}_n
+   . \]
+\end{definition}
+
+
+\newcommand{\height}{\operatorname{height}}
+
+
+\begin{definition}
+    \label{def:height_arbitrary_ideal}
+    \uses{def:height_prime_ideal}
+    The height of an ideal \(I \subset R\)
+    is the infimum of the heights of
+    prime ideals containing \(I\).
+\end{definition}
+    
+Sanity lemma: this definition of height agrees
+with the previous when \(I\) is prime (all by def).
+
+\begin{definition}
+    \label{def:krull_dim_ring}
+    \uses{def:height_prime_ideal}
+    The Krull dimension of the \(R\)
+    is the supremum of heights of prime
+    ideals \(\mathfrak{p} \subset R\).
+    In particular, \(\dim R = \height (0)\).
+\end{definition}
+    
+The following is a nice sanity check lemma.
+    
+\begin{lemma}
+    \label{lem:dim_local_eq_height_prime}
+    \uses{def:height_prime_ideal,def:krull_dim_ring}
+    Let \(R\) a ring and \(\mathfrak{p}\) a
+    prime ideal, then
+    \[
+    \dim R_{\mathfrak{p}} = \height \mathfrak{p}
+    \]
+\end{lemma}
+    
+\begin{proof}
+    This is a ``straightforward'' application of the
+    correspondance theorem for localizations.
+\end{proof}
+    
+\begin{definition}
+    \label{def:primary_ideal}
+    An ideal \(I\) is \(\mathfrak{p}\)-primary if it's
+    radical is equal to \(\mathfrak{p}\).
 \end{definition}
 
 \begin{definition}
-  \label{def:ring}
-  Krull dim of ring (prime ideals
-  are prime submodules, might need 
-  to show this)
+    \label{def:min_len_gen_set_maximal}
+    \uses{def:primary_ideal}
+    Let \((R,\mathfrak{m},k)\) be a local (noetherian?) ring.
+    Let \(\nu(R)\)
+    be the minimum of the lengths of generating sets of  
+    \(\mathfrak{m}\)-primary ideals.
 \end{definition}
+
+Now we state Krull's height theorem and its (partial) converse.
+
+
 
 \begin{theorem}
-  \label{thm:quotient_non_minimal_sub_dim_1}
+    \label{thm:krull_principal_ideal}
+    \uses{cor:local_maximal_gereating_set_basis_residue,def:height_prime_ideal}
+    Let \(R\) be a noetherian ring, 
+    and \(I\) a prinicpal ideal.
+    Then each minimal prime ideal over \(I\) 
+    (i.e. minimal among primes containing I)
+    has height at most 1.
+\end{theorem}
+
+\begin{proof}
+    See the Wikipedia page about Krull's principal ideal theorem
+    (recieved June 27 2023) for a detailed proof,
+    it uses passing to the quotient and the definition of
+    Artinian rings.
+\end{proof}
+
+\begin{theorem}
+    \label{thm:krull_height}
+    \uses{thm:krull_principal_ideal}
+    Let \(I = (x_{1}, \ldots, x_{n})\) be an ideal. 
+    Then each minimal prime over \(I\) has height
+    at most \(n\).
+\end{theorem}
+
+\begin{proof}
+    Use Krull's prinipal ideal and induct on the 
+    number of elements, see Wikipedia for details.
+\end{proof}
+
+\begin{theorem}
+    \label{thm:genset_of_any_height_of_noetherian_height_n}
+    \uses{def:height_arbitrary_ideal,lem:prime_avoidance}
+    Let \(R\) a noetherian ring, and \(I\) a proper 
+    ideal of height \(n\).
+    Then for all \(1 \leq i \leq n\),
+    there exist elements \(x_{1}, \ldots, x_{i}\)
+    such that
+    \(\height (x_{1}, \ldots, x_{i}) = i\).
+\end{theorem}
+
+\begin{proof}
+    Successively apply prime avoidance.
+\end{proof}
+
+\begin{theorem}
+    [Dimension Theorem]
+    \label{thm:dimension_theorem}
+    \uses{lem:dim_local_eq_height_prime,thm:krull_height,thm:genset_of_any_height_of_noetherian_height_n}
+    Let \((R,\mathfrak{m},k)\) be a local noetherian ring.
+    Let \(n \in \mathbb{N}\).
+    Then the following are equivalent
+    \begin{enumerate}[(a)]
+        \item \(\dim R = n\)
+        \item \(\height \mathfrak{m} = n\)
+        \item \(\nu(R) = n\).
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    The equivalence of (a) and (b) is
+    Lemma \ref{lem:dim_local_eq_height_prime}
+    applied to the situation of a local ring.
+    The directions of (b) \(\iff\) (c) are given
+    by Theorems \ref{thm:krull_height} and
+    \ref{thm:genset_of_any_height_of_noetherian_height_n},
+    respectively.
+\end{proof}
+
+
+%\begin{definition}
+%  \label{def:dim_module}
+%  The krull dimension of a module 
+%  is the supremum of the lengths
+%  of chains of prime submodules.
+%\end{definition}
+%
+%\begin{definition}
+%  \label{def:dim_ring}
+%  Krull dim of ring (prime ideals
+%  are prime submodules, might need 
+%  to show this)
+%\end{definition}
+
+\newcommand{\Assoc}{\operatorname{Assoc}}
+\newcommand{\Ann}{\operatorname{Ann}}
+
+\begin{theorem}
+    \label{thm:quotient_regular_sub_dim_1}
+    Let \(R\) be a ring, and \(M\) an \(R\)-module.
+    Let \(x\) be an \(M\)-regular element.
+    Then \(\dim M / xM \leq \dim M - 1\).
+\end{theorem}
+
+\begin{proof}
+    \uses{def:krull_dim_ring}
+    As \(x\) is \(M\)-regular, we have that
+    \(x \notin \mathfrak{p}\) for all
+    \(p \in  \Assoc M\),
+    otherwise there would be \(M\)-torsion.
+    
+    By definition, \(\dim M = \dim R / \Ann M\).
+    The associated primes of \(M\) are the same
+    as the minimal primes in \(R / \Ann M\),
+    so \(x\) is not contained in any such prime.
+    But then, any chain of prime ideals in 
+    \((R / \Ann M) / (x)\) lifts to a chain in
+    \(R / \Ann M\) of ideals which contain \((x)\).
+    But then the smallest ideal in the chain 
+    is not minimal since it contains \(x\), so
+    we can extend it to a minimal prime.
+\end{proof}
+
+\begin{corollary}
+  \label{cor:quotient_non_minimal_sub_dim_1}
   Let $x \in R$ be an element which is not in any 
   minimal prime ideal.
   Then $\dim R / (x) \leq \dim R - 1$
-\end{theorem}
+\end{corollary}
 
-\end{theorem}
+\begin{proof}
+  \uses{thm:quotient_regular_sub_dim_1}
+
+  Take $M = R$ in the previous theorem.
+\end{proof}
+
 
 Other dimension theory necessary? Probably?
 
@@ -222,9 +471,25 @@ Other dimension theory necessary? Probably?
 \begin{definition}
   \label{def:reg_loc}
   A local ring $R$ is regular if 
-  the minimal number of generators of its
-  maximal ideal is equal to the dimension of $R$.
+  $\mathfrak{m}$ is generated by a system of parameters.
 \end{definition}
+
+The following is a nice sanity check lemma.
+
+\begin{lemma}
+    \label{lem:reg_maximal_dim_generators}
+    \(R\) is regular if and only if 
+    the minimal number of generators of its maximal
+    ideal is equal to the (Krull) dimension of \(R\)
+\end{lemma}
+
+\begin{proof}
+    \uses{thm:dimension_theorem}
+    This follows by unwinding the definition 
+    and using the dimension theorem 
+    (the length of a system of paramaters is \(\nu(R)\)
+    by definition).
+\end{proof}
 
 \begin{definition}
   \label{def:reg_ring}
@@ -252,6 +517,13 @@ Other dimension theory necessary? Probably?
   \uses{def:reg_loc}
   Every regular ring is an integral domain.
 \end{lemma}
+
+\begin{proof}
+  \uses{cor:local_maximal_gereating_set_basis_residue}
+
+  See BH 2.2.3
+
+\end{proof}
 
 \begin{proposition}[BH 2.2.4]
   \label{prop:reg_quot_sys_param}
@@ -281,12 +553,19 @@ Other dimension theory necessary? Probably?
 \end{proposition}
 
 \begin{proof}
-  \uses{lem:reg_int_dom,thm:reg_seq_part_of_sys_param}
-  See Bruns-Herzog 2.2.5. This uses BH 2.2.4 for the forward
+  \uses{lem:reg_int_dom,
+    thm:reg_seq_part_of_sys_param,
+    lem:reg_maximal_dim_generators,
+    prop:reg_quot_sys_param
+  }
+  See Bruns-Herzog 2.2.5. This uses BH 2.2.4 
+  (which is Proposition \ref{prop:reg_quot_sys_param}) for the forward
   direction,
-  and for the reverse direction, we use BH 1.2.12 and the fact that
+  and for the reverse direction, we use BH 1.2.12 
+  (aka Theorem \ref{thm:reg_seq_part_of_sys_param}) 
+  and the fact that
   the minimal number of generators for $\mathfrak{m}$ is at least
-  $\dim R$ (need to account for the word ``system of parameters''.
+  $\dim R$, which is Lemma \ref{lem:reg_maximal_dim_generators}.
 \end{proof}
 
 \subsection{Support Theory}
@@ -371,9 +650,9 @@ Actually maybe we don't need depth??
 
 \begin{theorem}[BH 1.2.12]
   \label{thm:reg_seq_part_of_sys_param}
-  \uses{def:reg_seq}
-  \uses{thm:quotient_non_minimal_sub_dim_1}
-  \uses{lem:assoc_prime_zero_divisor}
+  \uses{def:reg_seq,cor:quotient_non_minimal_sub_dim_1,lem:assoc_prime_zero_divisor}
+  %\uses{thm:quotient_non_minimal_sub_dim_1}
+  %\uses{lem:assoc_prime_zero_divisor}
   Any regular sequence is part of a system of parameters
 \end{theorem}
 
