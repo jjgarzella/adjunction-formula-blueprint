@@ -47,7 +47,7 @@ jobs:
             python3 -m pip install invoke git+https://github.com/plastex/plastex.git git+https://github.com/mpenciak/noleanblueprint.git
             inv qweb
             #inv qpdf
-            cp print/blueprint.pdf web/
+            #cp print/blueprint.pdf web/
 
       - name: deploy
         uses: peaceiris/actions-gh-pages@v3
