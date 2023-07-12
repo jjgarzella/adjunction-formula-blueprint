@@ -129,7 +129,7 @@
     <span class="theorem_thmtitle">BH 1.2.12</span>
     <div class="thm_icons">
     <a class="icon proof" href="sect0008.html#thm:reg_seq_part_of_sys_param">#</a>
-    <a class="icon proof" href="sect0008.html#a0000000043"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0008.html#a0000000047"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
 </button>
@@ -142,8 +142,8 @@
         </header>
                 <ul class="uses">
           <li><a href="sect0005.html#def:reg_seq">Definition 1.4.3</a></li>
-          <li><a href="sect0004.html#cor:quotient_non_minimal_sub_dim_1">Corollary 1.3.12</a></li>
-          <li><a href="sect0007.html#lem:assoc_prime_zero_divisor">Lemma 1.6.4</a></li>
+          <li><a href="sect0004.html#cor:quotient_non_minimal_sub_dim_1">Corollary 1.3.16</a></li>
+          <li><a href="sect0007.html#lem:assoc_prime_zero_divisor">Lemma 1.6.5</a></li>
         </ul>
 
       </div>
@@ -156,7 +156,7 @@
 
   </div>
 </div> </p>
-<div class="proof_wrapper" id="a0000000043">
+<div class="proof_wrapper" id="a0000000047">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -164,7 +164,16 @@
     <span class="expand-proof">▼</span>
   </div>
   <div class="proof_content">
-  <p>This is from BH chapter 1, and uses associated primes. </p>
+  
+<p>This is from BH chapter 1, and uses associated primes. It also uses the definition of dimension of a module, </p>
+<p>Let \(x \in \mathfrak {m}\) an \(M\)-regular element. As \(x \in R\) is \(M\)-regular, it is not in any associated prime (Lemma <a href="sect0007.html#lem:assoc_prime_zero_divisor">1.6.5</a>). </p>
+<p>Then, as the associated primes are minimal among the primes that contain the annihilator (which is the support), we have that the previous statement implies that </p>
+<div class="displaymath" id="a0000000048">
+  \[  \dim M / xM \leq \dim M - 1  \]
+</div>
+<p> by corollary <a href="sect0004.html#cor:quotient_non_minimal_sub_dim_1">1.3.16</a> </p>
+<p>By dimension theory (see BH A.4), this inequality is an equality. </p>
+<p>Given a regular sequence, iterate this process. Once we get to the end of this process, we can extend this sequence (by prime avoidance?) to a sequence of \(\dim M\) elements, by definition (of system of parameters) we have a system of parameters for M. </p>
 
   </div>
 </div>
