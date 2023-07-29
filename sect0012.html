@@ -12,10 +12,10 @@
 <meta name="generator" content="plasTeX" />
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Blueprint for the Adjunction Formula: Regular Rings</title>
-<link rel="next" href="sect0013.html" title="Misc Commutative Algebra" />
-<link rel="prev" href="sect0011.html" title="Adjunction Formula" />
-<link rel="up" href="sect0011.html" title="Adjunction Formula" />
+<title>Blueprint for the Adjunction Formula: Proof of Auslander-Buchbaum-Serre</title>
+<link rel="next" href="sect0013.html" title="Adjunction Formula" />
+<link rel="prev" href="sect0011.html" title="Auslander-Buchsbaum Formula" />
+<link rel="up" href="sect0001.html" title="Auslander-Buchsbaum-Serre Theorem" />
 <link rel="stylesheet" href="styles/theme-white.css" />
 <link rel="stylesheet" href="styles/amsthm.css" />
 </head>
@@ -29,10 +29,10 @@
 <div class="wrapper">
 <nav class="toc">
 <ul class="sub-toc-0">
-<li class="">
+<li class=" active">
   <a href="sect0001.html"><span class="toc_ref">1</span> <span class="toc_entry">Auslander-Buchsbaum-Serre Theorem</span></a>
-  <span class="expand-toc">▶</span>
-  <ul class="sub-toc-1">
+  <span class="expand-toc">▼</span>
+  <ul class="sub-toc-1 active">
      <li class="">
   <a href="sect0002.html"><span class="toc_ref">1.1</span> <span class="toc_entry">Nakayama’s Lemma and Corollaries</span></a>
  </li>
@@ -40,53 +40,59 @@
   <a href="sect0003.html"><span class="toc_ref">1.2</span> <span class="toc_entry">Projective Resolutions</span></a>
  </li>
 <li class="">
-  <a href="sect0004.html"><span class="toc_ref">1.3</span> <span class="toc_entry">Dimension Theory</span></a>
+  <a href="sect0004.html"><span class="toc_ref">1.3</span> <span class="toc_entry">Prime Avoidance and Variants</span></a>
  </li>
 <li class="">
-  <a href="sect0005.html"><span class="toc_ref">1.4</span> <span class="toc_entry">Regular elements and sequences</span></a>
+  <a href="sect0005.html"><span class="toc_ref">1.4</span> <span class="toc_entry">Dimension Theory</span></a>
  </li>
 <li class="">
-  <a href="sect0006.html"><span class="toc_ref">1.5</span> <span class="toc_entry">Support Theory</span></a>
+  <a href="sect0006.html"><span class="toc_ref">1.5</span> <span class="toc_entry">Regular elements and sequences</span></a>
  </li>
 <li class="">
-  <a href="sect0007.html"><span class="toc_ref">1.6</span> <span class="toc_entry">Associated Primes</span></a>
+  <a href="sect0007.html"><span class="toc_ref">1.6</span> <span class="toc_entry">Support Theory</span></a>
  </li>
 <li class="">
-  <a href="sect0008.html"><span class="toc_ref">1.7</span> <span class="toc_entry">Depth and Regular Sequences</span></a>
+  <a href="sect0008.html"><span class="toc_ref">1.7</span> <span class="toc_entry">Selected Results on Primary Decomposition</span></a>
  </li>
 <li class="">
-  <a href="sect0009.html"><span class="toc_ref">1.8</span> <span class="toc_entry">Auslander-Buchsbaum Formula</span></a>
+  <a href="sect0009.html"><span class="toc_ref">1.8</span> <span class="toc_entry">Associated Primes</span></a>
  </li>
 <li class="">
-  <a href="sect0010.html"><span class="toc_ref">1.9</span> <span class="toc_entry">Proof of Auslander-Buchbaum-Serre</span></a>
+  <a href="sect0010.html"><span class="toc_ref">1.9</span> <span class="toc_entry">Depth and Regular Sequences</span></a>
+ </li>
+<li class="">
+  <a href="sect0011.html"><span class="toc_ref">1.10</span> <span class="toc_entry">Auslander-Buchsbaum Formula</span></a>
+ </li>
+<li class=" active current">
+  <a href="sect0012.html"><span class="toc_ref">1.11</span> <span class="toc_entry">Proof of Auslander-Buchbaum-Serre</span></a>
  </li>
 
   </ul>
  </li>
-<li class=" active">
-  <a href="sect0011.html"><span class="toc_ref">2</span> <span class="toc_entry">Adjunction Formula</span></a>
-  <span class="expand-toc">▼</span>
-  <ul class="sub-toc-1 active">
-     <li class=" active current">
-  <a href="sect0012.html"><span class="toc_ref">2.1</span> <span class="toc_entry">Regular Rings</span></a>
+<li class="">
+  <a href="sect0013.html"><span class="toc_ref">2</span> <span class="toc_entry">Adjunction Formula</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0014.html"><span class="toc_ref">2.1</span> <span class="toc_entry">Regular Rings</span></a>
  </li>
 <li class="">
-  <a href="sect0013.html"><span class="toc_ref">2.2</span> <span class="toc_entry">Misc Commutative Algebra</span></a>
+  <a href="sect0015.html"><span class="toc_ref">2.2</span> <span class="toc_entry">Misc Commutative Algebra</span></a>
  </li>
 <li class="">
-  <a href="sect0014.html"><span class="toc_ref">2.3</span> <span class="toc_entry">Kahler differentials</span></a>
+  <a href="sect0016.html"><span class="toc_ref">2.3</span> <span class="toc_entry">Kahler differentials</span></a>
  </li>
 <li class="">
-  <a href="sect0015.html"><span class="toc_ref">2.4</span> <span class="toc_entry">Coherent Sheaves and Stalks</span></a>
+  <a href="sect0017.html"><span class="toc_ref">2.4</span> <span class="toc_entry">Coherent Sheaves and Stalks</span></a>
  </li>
 <li class="">
-  <a href="sect0016.html"><span class="toc_ref">2.5</span> <span class="toc_entry">Irreducible Schemes</span></a>
+  <a href="sect0018.html"><span class="toc_ref">2.5</span> <span class="toc_entry">Irreducible Schemes</span></a>
  </li>
 <li class="">
-  <a href="sect0017.html"><span class="toc_ref">2.6</span> <span class="toc_entry">Left-exactness of conormal bundle</span></a>
+  <a href="sect0019.html"><span class="toc_ref">2.6</span> <span class="toc_entry">Left-exactness of conormal bundle</span></a>
  </li>
 <li class="">
-  <a href="sect0018.html"><span class="toc_ref">2.7</span> <span class="toc_entry">Main Proof</span></a>
+  <a href="sect0020.html"><span class="toc_ref">2.7</span> <span class="toc_entry">Main Proof</span></a>
  </li>
 
   </ul>
@@ -101,17 +107,59 @@
 
 
 <div class="main-text">
-<h2 id="a0000000013">2.1 Regular Rings</h2>
-<p>We summarize things which have been proved in the previous section. </p>
-<p><div class="proposition_thmwrapper" id="prop:regular_def_equiv">
-  <div class="proposition_thmheading">
-    <span class="proposition_thmcaption">
-    Proposition
+<h2 id="a0000000013">1.11 Proof of Auslander-Buchbaum-Serre</h2>
+<p><div class="lemma_thmwrapper" id="lem:reg_implies_finite_global">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
     </span>
-    <span class="proposition_thmlabel">2.1.1</span>
+    <span class="lemma_thmlabel">1.11.1</span>
     <div class="thm_icons">
-    <a class="icon proof" href="sect0012.html#prop:regular_def_equiv">#</a>
-    <a class="icon proof" href="sect0012.html#a0000000056"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0012.html#lem:reg_implies_finite_global">#</a>
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+    <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+                <ul class="uses">
+          <li><a href="sect0003.html#def:globdim">Definition 1.2.8</a></li>
+        </ul>
+
+      </div>
+    </div>
+
+  </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>  Let \(R\) be a regular local ring. Then \(R\) has finite global dimension. That is, any finitely generated module \(R\) has finite projective dimension. </p>
+
+  </div>
+</div> </p>
+<div class="proof_wrapper" id="a0000000063">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▼</span>
+  </div>
+  <div class="proof_content">
+  
+  </div>
+</div>
+<p><div class="theorem_thmwrapper" id="thm:ferrand_vasconcelos">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">1.11.2</span>
+    <span class="theorem_thmtitle">Ferrand-Vasconcelos, BH 2.2.8</span>
+    <div class="thm_icons">
+    <a class="icon proof" href="sect0012.html#thm:ferrand_vasconcelos">#</a>
+    <a class="icon proof" href="sect0012.html#a0000000064"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
 </button>
@@ -123,7 +171,8 @@
 </button>
         </header>
                 <ul class="uses">
-          <li><a href="sect0002.html#cor:local_maximal_gereating_set_basis_residue">Corollary 1.1.2</a></li>
+          <li><a href="sect0006.html#def:reg_seq">Definition 1.5.3</a></li>
+          <li><a href="sect0003.html#def:projdim">Definition 1.2.4</a></li>
         </ul>
 
       </div>
@@ -131,18 +180,13 @@
 
   </div>
   </div>
-  <div class="proposition_thmcontent">
-  <p>  Let \((R,\mathfrak {m},k)\) be a noetherian ring. The following are equivalent: </p>
-<ol class="enumerate">
-  <li><p>Let \(n\) be the minimal number of generators of \(\mathfrak {m}\). Then \(n = \dim R\). </p>
-</li>
-  <li><p>\(\dim \mathfrak {m} / \mathfrak {m}^{2} = \dim R\) </p>
-</li>
-</ol>
+  <div class="theorem_thmcontent">
+  
+<p>Let \((R,\mathfrak {m},k)\) be a local noetherian ring. Let \(I\) be a nonzero ideal with finite projective dimension. If \(I / I^2\) is a free \(R\)-module, then \(I\) is generated by a regular sequence. </p>
 
   </div>
 </div> </p>
-<div class="proof_wrapper" id="a0000000056">
+<div class="proof_wrapper" id="a0000000064">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -150,28 +194,84 @@
     <span class="expand-proof">▼</span>
   </div>
   <div class="proof_content">
-  <p>It is enough to show that \(\mu (\mathfrak {m}) = \dim \mathfrak {m} / \mathfrak {m}^{2}\), where \(\mu (\mathfrak {m})\) is the minimal number of generators of \(\mathfrak {m}\). </p>
-<p>First, we show \(\mu (\mathfrak {m}) \leq \dim \mathfrak {m} / \mathfrak {m}^{2}\). Let \(\overline{x}_{1}, \ldots , \overline{x}_{n}\) be a basis of \(\mathfrak {m} / \mathfrak {m}^{2}\) over \(k\). Then, by a corollary of Nakayama’s lemma (Atiyah-MacDonald 2.8), the lifts of the \(\overline{x}_{i}\) generate \(\mathfrak {m}\), so \(\mu (\mathfrak {m}) \leq n\) as desired. </p>
-<p>Second, we show that \(\dim \mathfrak {m} / \mathfrak {m}^{2} \leq \mu (\mathfrak {m})\). Let \(x_{1}, \ldots , x_{n}\) be a generating set of \(\mathfrak {m}\). Then, the residues of the \(x_{i}\) generate \(\mathfrak {m} / \mathfrak {m}^{2}\) (quotient map is a homomorphism or something). Since it is a generating set, it contains a basis by linear algebra, and \(\dim \mathfrak {m} / \mathfrak {m}^{2} \leq n\) as desired. </p>
+  <p>Since \(I\) has finite projective dimension, it has a finite free resolution. Thus, by 1.4.6 it has must have an \(R\)-regular element \(x\). . . . finish the proof . . . </p>
 
   </div>
 </div>
-<p><div class="lemma_thmwrapper" id="thm:regular_rings_localize">
-  <div class="lemma_thmheading">
-    <span class="lemma_thmcaption">
-    Lemma
+<p><div class="theorem_thmwrapper" id="thm:auslander_buchsbaum_serre">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
     </span>
-    <span class="lemma_thmlabel">2.1.2</span>
+    <span class="theorem_thmlabel">1.11.3</span>
+    <span class="theorem_thmtitle">Auslander-Buchsbaum-Serre Criterion, BH 2.2.7</span>
     <div class="thm_icons">
-    <a class="icon proof" href="sect0012.html#thm:regular_rings_localize">#</a>
+    <a class="icon proof" href="sect0012.html#thm:auslander_buchsbaum_serre">#</a>
+    <a class="icon proof" href="sect0012.html#a0000000065"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
 
   </div>
   </div>
-  <div class="lemma_thmcontent">
-  <p> The localization of a regular local ring at (read: away from) a prime ideal is a regular local ring. </p>
+  <div class="theorem_thmcontent">
+  <p>  Let \((R,\mathfrak {m},k\) be a noetherian local ring. The following are equivalent: </p>
+<ol class="enumerate">
+  <li><p>\(R\) is regular. </p>
+</li>
+  <li><p>\(R\) has finite global dimension. </p>
+</li>
+  <li><p>\(\text{proj dim}k {\lt} \infty \) </p>
+</li>
+</ol>
 
   </div>
 </div> </p>
+<div class="proof_wrapper" id="a0000000065">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▼</span>
+  </div>
+  <div class="proof_content">
+  
+<p>(i) \(\implies \) (ii) is precisely Lemma <a href="sect0012.html#lem:reg_implies_finite_global">1.11.1</a> </p>
+<p>(ii) \(\implies \) (iii) follows by applying the definition of global dimension with \(M=k\) </p>
+<p>(iii) \(\implies \) (i) is a special case of Theorem <a href="sect0012.html#thm:ferrand_vasconcelos">1.11.2</a>, using <a href="sect0006.html#prop:reg_loc_maximal_reg_seq">1.5.10</a> to conclude regularity. </p>
+<p><a href="sect0012.html#thm:ferrand_vasconcelos">1.11.2</a>. </p>
+
+  </div>
+</div>
+<p><div class="theorem_thmwrapper" id="thm:regular_rings_localize">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">1.11.4</span>
+    <span class="theorem_thmtitle">Regular Rings Localize, BH 2.2.9</span>
+    <div class="thm_icons">
+    <a class="icon proof" href="sect0012.html#thm:regular_rings_localize">#</a>
+    <a class="icon proof" href="sect0012.html#a0000000066"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+
+  </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p> Let \(R\) be a regular local ring, and let \(\mathfrak {p}\) be a prime ideal in \(R\). Then \(R_{\mathfrak {p}}\) is a regular local ring. </p>
+
+  </div>
+</div> </p>
+<div class="proof_wrapper" id="a0000000066">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▼</span>
+  </div>
+  <div class="proof_content">
+  <p> By Auslander-Buchsbaum-Serre, it is enough to show that \(R_{\mathfrak {p}} / \mathfrak {p}R_{\mathfrak {p}}\) has finite projective dimension. Also by Auslander-Buchsbaum-Serre, we know that \(k = R / \mathfrak {m}\) has finite projective dimension. Then \(k\) has a minimal free resolution of finite length by Proposition ??. By the fact that the loclization of a resolution is a resolution, We get a finite resolution for \(R_{\mathfrak {p}} / \mathfrak {p}R_{\mathfrak {p}}\), thus any minimal resolution is also finite, giving us what we want. </p>
+
+  </div>
+</div>
 
 </div> <!--main-text -->
 </div> <!-- content-wrapper -->
@@ -179,11 +279,11 @@
 </div> <!-- wrapper -->
 
 <nav class="prev_up_next">
-  <a href="sect0011.html" title="Adjunction Formula"><svg  class="icon icon-arrow-left "><use xlink:href="symbol-defs.svg#icon-arrow-left"></use></svg>
+  <a href="sect0011.html" title="Auslander-Buchsbaum Formula"><svg  class="icon icon-arrow-left "><use xlink:href="symbol-defs.svg#icon-arrow-left"></use></svg>
 </a>
-  <a href="sect0011.html" title="Adjunction Formula"><svg  class="icon icon-arrow-up "><use xlink:href="symbol-defs.svg#icon-arrow-up"></use></svg>
+  <a href="sect0001.html" title="Auslander-Buchsbaum-Serre Theorem"><svg  class="icon icon-arrow-up "><use xlink:href="symbol-defs.svg#icon-arrow-up"></use></svg>
 </a>
-  <a href="sect0013.html" title="Misc Commutative Algebra"><svg  class="icon icon-arrow-right "><use xlink:href="symbol-defs.svg#icon-arrow-right"></use></svg>
+  <a href="sect0013.html" title="Adjunction Formula"><svg  class="icon icon-arrow-right "><use xlink:href="symbol-defs.svg#icon-arrow-right"></use></svg>
 </a>
 </nav>
 
