@@ -213,24 +213,9 @@ The following lemma is used by user6:
 % TODO: figure out what we "really want to prove" with localizations and resolutions
 %         this is kind of a cop-out
 
-\subsection{Dimension Theory}
+\subsection{Prime Avoidance and Variants}
 
-A dimension theory normally takes the form of 
-a theorem which says that two notions of dimension
-are the same. 
-
-Following the Appendix of Bruns-Herzog, we will use two 
-notions, one related to the
-\textit{lengths a systems of parameters} and one 
-related to the \textit{heights of prime ideals}. 
-We have not defined these terms, so we will do so first, and then
-prove out theorem.
-
-As our main tool, we use Krull's Principal Ideal Theorem
-(aka the Hauptidealsatz). 
-One can also use Hilbert Polynomials, see Atiyah-MacDonald.
-
-Before we begin, we present the prime avoidance lemma, which will be used
+Before we get too far, we present the prime avoidance lemma, which will be used
 repeatedly during the rest of the blueprint.
 
 \begin{lemma}
@@ -291,6 +276,41 @@ We also have a few variants (see wikipedia page for "Prime Avoidance")
     there exists some \(y \in J\) such that
     \(x + y \not\in \mathfrak{p}_{j}\) for all \(j\)
 \end{lemma}
+\begin{lemma}
+    Let \(\mathfrak{p}_{1}, \ldots, \mathfrak{p}_{n}\) be prime ideals.
+    Let \(I\) be an ideal contained in in their union.
+    Then \(I \subset \mathfrak{p}_{i}\) for some \(i\).
+\end{lemma}
+
+\begin{proof}
+    This is a weaker statement then both of the two above it.
+\end{proof}
+
+\begin{lemma}
+    Let \(I_{1}, \ldots, I_{n}\) be ideals, let \(\mathfrak{p}\) be a
+    prime ideal containing the intersection of them all.
+    Then \(I_{i} \subset \mathfrak{p}\) for some \(i\).
+    If \(\mathfrak{p}\) is exactly the intersection, then
+    \(I_{i} = \mathfrak{p}\) for some \(i\).
+\end{lemma}
+
+\subsection{Dimension Theory}
+
+A dimension theory normally takes the form of 
+a theorem which says that two notions of dimension
+are the same. 
+
+Following the Appendix of Bruns-Herzog, we will use two 
+notions, one related to the
+\textit{lengths a systems of parameters} and one 
+related to the \textit{heights of prime ideals}. 
+We have not defined these terms, so we will do so first, and then
+prove out theorem.
+
+As our main tool, we use Krull's Principal Ideal Theorem
+(aka the Hauptidealsatz). 
+One can also use Hilbert Polynomials, see Atiyah-MacDonald.
+
 
 Now, we can start to define dimension.
 
@@ -326,7 +346,8 @@ with the previous when \(I\) is prime (all by def).
     The Krull dimension of the \(R\)
     is the supremum of heights of prime
     ideals \(\mathfrak{p} \subset R\).
-    In particular, \(\dim R = \height (0)\).
+    %In particular, \(\dim R = \height (0)\).
+    % the above is not true
 \end{definition}
     
 The following is a nice sanity check lemma.
@@ -686,6 +707,103 @@ The following is a nice sanity check lemma.
   omitted for now
 \end{proof}
 
+\subsection{Selected Results on Primary Decomposition}
+
+\begin{definition}
+    \label{def:primary}
+    Given a prime ideal \(\mathfrak{p}\) of the ring \(R\),
+    an ideal \(I\) is \(\mathfrak{p}\)-primary if
+    for all \(x, y \in I\), either \(x \in I\) or \(y^n \in I\)
+    for some \(n\).
+    (This is already in mathlib)
+\end{definition}
+
+\begin{lemma}
+    \label{lem:radical_isPrime_of_isPrimary}
+    \uses{def:primary}
+    If \(\mathfrak{q}\) is a primary ideal, then
+    \(\sqrt{q}\) is a prime ideal.
+\end{lemma}
+
+\begin{proof}
+
+\end{proof}
+
+\begin{lemma}
+    \label{lem:isPrimary_inf_finset}
+    \uses{def:primary}
+    Let \(I_{1}, \ldots, I_{n}\) be \(\mathfrak{p}\)-primary ideals.
+    Then their intersection is \(\mathfrak{p}\)-primary.
+\end{lemma}
+
+\begin{proof}
+    ``isPrimary_inf'' in mathlib is this but for only two ideals,
+    so just use induction.
+\end{proof}
+
+\begin{definition}
+    \label{def:primary_decomp}
+    \uses{def:primary}
+    A primary decomposition of an ideal \(I \subset R\) is
+    an expression of \(I\) as an intersection of primary ideals,
+    that is a collection of ideals
+    \(\mathfrak{q}_{i}\), \(1 \leq i \leq n\),
+    such that
+    \[
+    I = \bigcap_{i=1}^{n} \mathfrak{q}_{i} 
+    .\]
+\end{definition}
+
+\begin{definition}
+    \label{def:decomposable}
+    \uses{def:primary_decomp}
+    An ideal \(I\) is decomposable there exists a primary decomposition
+    with intersection \(I\).
+\end{definition}
+
+\begin{definition}
+    \label{def:minimal_primary_decomp}
+    \uses{def:primary_decomp}
+    A minimal primary decomposition is a primary decomposition such that
+    \begin{enumerate}[(i)]
+        \item The ideals \(\sqrt{\mathfrak{q}_{i}}\) are distinct
+        \item
+            \[
+            \bigcap_{i \neq j}^{} \mathfrak{q}_{j} \not\subset \mathfrak{q}_{i} 
+            \]
+            for all \(1 \leq i \leq n\).
+    \end{enumerate}
+\end{definition}
+
+
+\begin{lemma}
+    \label{lem:has_minimal_primary_decomp_of_decomposable}
+    \uses{def:decomposable}
+    Any decomposable ideal has a minimal primary decomposition
+\end{lemma}
+
+\begin{proof}
+    \uses{lem:isPrimary_inf_finset}
+    Reduce to the case where there is a single prime ideal per
+    primary ideal by lemma \ref{lem:isPrimary_inf_finset},
+    and then if there are any superflous terms breaking condition
+    (ii), remove them.
+\end{proof}
+
+
+\begin{theorem}
+    [First Uniqueness Theorem for Primary Decomposition]
+    \label{thm:first_uniqueness_primary_decomposition}
+    \uses{lem:has_minimal_primary_decomp_of_decomposable, lem:prime_avoidance}
+
+\end{theorem}
+
+\begin{proof}
+    See Atiyah-MacDonald, Theorem 4.5
+\end{proof}
+
+
+
 \subsection{Associated Primes}
 
 
@@ -729,6 +847,7 @@ The following is a nice sanity check lemma.
 
 \begin{lemma}
   \label{lem:assoc_prime_zero_divisor}
+  \uses{thm:first_uniqueness_primary_decomposition}
   An element $x \in R$ is a zero-divisor iff
   it is in an associated prime.
   (geometrically, it vanishes at an associated point)
