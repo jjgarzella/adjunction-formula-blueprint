@@ -1,0 +1,839 @@
+\documentclass[a4paper]{article}
+
+%% Language and font encodings
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+
+%% Sets page size and margins
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+%% Useful packages
+\usepackage{mathptmx,amsmath,colonequals}
+\usepackage{amssymb,gensymb,mathrsfs}
+\usepackage{amscd,amsthm}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage[shortlabels]{enumitem}
+\usepackage{extarrows}
+\usepackage{tikz,tikz-cd}
+%\usepackage{hyperref}
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{conj}[thm]{Conjecture}
+
+%\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{ex}[thm]{Example}
+\newtheorem{xca}[thm]{Exercise}
+
+%\theoremstyle{remark}
+\newtheorem{rmk}[thm]{Remark}
+
+\newcommand{\arxiv}[1]{\href{http://arxiv.org/abs/#1}{{\tt arXiv:#1}}}
+
+% convenient renaming
+\newcommand{\isom}{\cong}
+\newcommand{\ins}{\subset}
+\newcommand{\dual}{\vee}
+\newcommand{\cross}{\times}
+
+% general text operators
+\newcommand{\Image}{\operatorname{Im}}
+\newcommand{\Coim}{\operatorname{Coim}}
+\newcommand{\Ker}{\operatorname{Ker}}
+\newcommand{\Coker}{\operatorname{Coker}}
+\newcommand{\colim}{\operatorname{colim}}
+
+% arrows
+\newcommand{\surj}{\twoheadrightarrow}
+\newcommand{\inj}{\xhookrightarrow{}}
+
+% context
+\newcommand{\basefield}{K}
+\newcommand{\basering}{R}
+
+% algebra
+\newcommand{\category}[1]{\textsf{#1}}
+\newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\Ext}{\operatorname{Ext}}
+\newcommand{\Tor}{\operatorname{Tor}}
+% TODO: put a \newcommand for the characteristic
+
+% commutative algebra
+%\newcommand{\depth}{\operatorname{depth}}
+%\newcommand{\height}{\operatorname{height}}
+%\newcommand{\pd}{\operatorname{pd}}
+%\newcommand{\injd}{\operatorname{injd}}
+
+% algebraic geometry
+\newcommand{\Spec}{\operatorname{Spec}}
+\newcommand{\Spa}{\operatorname{Spa}}
+
+% custom ops here
+\newcommand{\codim}{\operatorname{codim}}
+
+% custom commands here
+\newcommand{\conormal}{\mathscr{I} / \mathscr{I}^{2}}
+
+\title{A detailed proof of the adjunction formula}
+\author{Jack J Garzella}
+
+\begin{document}
+
+\maketitle
+
+\section{Regular Varieties}
+
+There are two (very closely related)
+notions of ``smoothness'' given in Vakil Chatper 12.
+The one we need for this proof is ``regularity''.
+
+\begin{prop}
+	Let \((R,\mathfrak{m},k)\) be a noetherian ring. 
+	The following are equivalent:
+	\begin{enumerate}[(a)]
+		\item Let \(n\) be the minimal number of generators of
+			\(\mathfrak{m}\).
+			Then \(n = \dim R\).
+		\item \(\dim \mathfrak{m} / \mathfrak{m}^{2}  = \dim R\)
+	\end{enumerate}
+\end{prop}
+
+\begin{proof}
+	It is enough to show that 
+	\(\mu(\mathfrak{m}) = \dim \mathfrak{m} / \mathfrak{m}^{2}\),
+	where \(\mu(\mathfrak{m})\) is the minimal number of generators
+	of \(\mathfrak{m}\).
+	
+	First, we show \(\mu(\mathfrak{m}) \leq \dim \mathfrak{m} / \mathfrak{m}^{2}\).
+	Let \(\overline{x}_{1}, \ldots, \overline{x}_{n}\) 
+	be a basis of \(\mathfrak{m} / \mathfrak{m}^{2}\) 
+	over \(k\).
+	Then, by a corollary of Nakayama's lemma (Atiyah-MacDonald 2.8),
+	the lifts of the \(\overline{x}_{i}\) generate \(\mathfrak{m}\),
+	so \(\mu(\mathfrak{m}) \leq n\) as desired.
+
+	Second, we show that 
+	\(\dim \mathfrak{m} / \mathfrak{m}^{2} \leq \mu(\mathfrak{m})\).
+	Let \(x_{1}, \ldots, x_{n}\) be a generating set of 
+	\(\mathfrak{m}\).
+	Then, the residues of the \(x_{i}\) generate 
+	\(\mathfrak{m} / \mathfrak{m}^{2}\) (quotient map is a 
+	homomorphism or something).
+	Since it is a generating set, it contains a basis by
+	linear algebra, and
+	\(\dim \mathfrak{m} / \mathfrak{m}^{2} \leq n\) as desired.
+\end{proof}
+
+The part that is needed in user6's proof is (b) in the proposition.
+I believe this is also what is used in Hartshorne II.8.17
+
+\begin{defn}
+	Let \(R\) be a noetherian local ring.
+	\(R\) is \textit{regular} if one (equivalently, all)
+	of the conditions from the previous proposition holds.
+\end{defn}
+
+The following lemma is used in the proof that the 
+conormal sequence is exact on the left by both 
+Hartshorne and user6.
+
+\begin{lem}
+	The localization of a regular local ring at (read: away from) a prime 
+	ideal is a regular local ring.
+\end{lem}
+
+\begin{proof}
+	This proof uses two things
+	\begin{itemize}
+		\item Auslander-Buchsbaum-Serre
+		\item The localization of a projective resolution
+			is a projective resolution
+			(follows from the fact that localizations are exact)
+	\end{itemize}
+\end{proof}
+
+The following lemma is used by user6:
+
+\begin{lem}
+	A finitely generated projective module 
+	over a regular local ring is free
+\end{lem}
+
+
+\begin{proof}
+	A proof of this theorem can be pieced together from this
+	stack exchange:
+	https://math.stackexchange.com/questions/3362463/projective-modules-over-local-rings-are-free-matsumuras-proof
+	This proof needs
+	\begin{itemize}
+		\item Nakayama's lemma
+		\item Equivalent definitions of projective modules
+	\end{itemize}
+\end{proof}
+
+
+
+%TODO: define a regular scheme using this as the local definition
+
+%% Smooth morphisms
+%
+%\begin{prop}
+%	Let \(f: X \to Y\) 
+%	be a map of schemes which is locally of finite
+%	presentation (and thus locally of finite type).
+%	The following are equivalent
+%	\begin{enumerate}[(i)]
+%		\item (Wikipedia Definition)
+%			\(f\) is flat and for every geometric point
+%			\(s : \overline{k} \to Y\), 
+%			the fiber \(X_{s} := X \times_{Y} s\) 
+%			is regular.
+%		\item (Hartshorne Definition)
+%			\(f\) is flat and the sheaf of relative
+%			differentials \(\Omega_{X / Y}\) is 
+%			locally free of rank equal to the 
+%			relative dimension of \(f\).
+%		\item (Vakil Definition)
+%			For any \(x \in X\), there exists a neighborhood 
+%			\(\Spec B\) of \(x\) and a neighborhood 
+%			\(\Spec A\) of \(f(x)\) such that 
+%			\(B = A[t_{1}, \ldots, t_{n}] / (P_{1}, \ldots, P_{m})\) 
+%			and the Jacobian matrix has full rank, i.e.
+%			the ideal generated by the \(m\)-by-\(m\) minors
+%			of \((\partial P_{i} / \partial t_{j})\) is \(B\).
+%			
+%		\item \(f\) is formally smooth
+%	\end{enumerate}
+%\end{prop}
+%
+%\begin{def}
+%	If any of the previous conditions is satisfied, 
+%	the map \(f\) is said to be a \textit{smooth} morphism
+%	of schemes.
+%\end{def}
+%
+%\begin{def}
+%	A \(k\)-scheme \(X\) is  \textit{smooth over \(k\)} if 
+%	the structure map \(X \to k\) is smooth.
+%\end{def}
+
+\section{Kahler differentials}
+
+% I think this might be important for defining kahler 
+%   differentials in lean
+% https://math.stackexchange.com/questions/3783141/functoriality-of-the-module-of-k%C3%A4hler-differentials
+
+\newcommand{\Der}{\operatorname{Der}}
+
+We use the following strategy to define
+the Kahler differentials:
+first, we give the universal property, 
+and then we give a few constructions that
+satisfy the universal property
+
+Let \(A\) be an \(R\)-algebra. 
+\begin{defn}
+	An \(R\)-linear derivation of \(A\) into \(M\) 
+	is a map of \(R\)-modules
+	\(d \colon A \to M\) 
+\end{defn}
+
+The set of derivations is denoted \(\Der_{R}(A,M)\)
+
+\begin{lem}
+	\(\Der_{R}(A,M)\) is an \(R\)-module.
+\end{lem}
+
+\begin{proof}
+	Derivations live in \(\Hom_{R} (A,M)\),
+	so all we need to check is that 
+	Leibnitz' rule still holds after addition,
+	which we can do explicitly.
+\end{proof}
+% is this actually an \(A\)-module??
+
+\begin{defn}
+	The \textit{module of Kahler differentials}
+	\(\Omega_{A / R}\) is the \(A\)-module that represents
+	the functor \(M \mapsto \Der_{R}(A,M)\) 
+	from \(A\)-modules to \(R\)-modules.
+\end{defn}
+
+Of course as we define by universal property,
+it is not clear that the module exists.
+
+\begin{lem}
+	The following module satisfies the universal property 
+	of \(\Omega_{R / A}\) :
+	Take the free \(R\)-module on the symbols 
+	\(da\) for \(a \in A\), and quotient
+	out by the relations
+	\begin{enumerate}[(1)]
+		\item \(dr = 0\) for \(r \in R\) 
+		\item \(d(a + a^{\prime}) = da + da^{\prime}\)
+		\item \(d(aa^{\prime}) = 
+			ada^{\prime} + a^{\prime}da\)
+	.\end{enumerate}
+\end{lem}
+
+We can state another version of the universal property:
+
+\begin{lem}
+	The module of Kahler differentials has the following
+	universal property: 
+	The map \(d : A \to \Omega_{A / R}\) 
+	defined by \(a \mapsto da\)
+	is initial in
+	the category whose objects are 
+	derivations \(\delta : A \to M\) and
+	morphisms are diagrams
+	\[
+	\begin{tikzcd}
+	A \arrow{r}{\delta^{\prime}} \arrow{rd}{\delta} & 
+	M^{\prime} \arrow{d}{} \\
+	& M
+	\end{tikzcd}
+	\]
+\end{lem}
+
+Finally, there is a second construction:
+\begin{lem}
+	Let \(I\) be the kernel of the multiplication
+	map \(A \otimes_{R} A \to A\).
+	Then \(I / I^{2}\) 
+	satisfies the universal property of \(\Omega_{A / R}\)
+\end{lem}
+
+\begin{proof}
+	This proof (at least in Vakil) is a bit long, uses a lot 
+	of properties of pure tensors, and I'm not sure
+	if it's worth it.
+\end{proof}
+
+The following is quite important.
+\begin{lem}
+	By \(\phi\), we mean the ring map \(R \to A\) 
+	given by the algebra structure
+	Let \(S\) a multiplicative subset of \(A\),
+	and let \(T\) be a multiplicative subset
+	of \(R\) with \(\phi(T) \ins S\).
+	Assume the following diagram commutes
+	\[
+	\begin{tikzcd}
+	R \arrow{r}{} \arrow{d}[swap]{} &
+	A \arrow{d}{} \\
+	T^{-1}R \arrow{r}{} &
+	S^{-1}A
+	\end{tikzcd}
+	\]
+	
+	We have a (canonical) isomorphism
+	\[
+	S^{-1}\Omega_{A / R} \isom
+	\Omega_{S^{-1}A / T^{-1}R}	
+	\] 
+\end{lem}
+
+\begin{proof}
+	TODO
+\end{proof}
+
+\begin{lem}
+	Given a map of schemes 
+	\(X \to S\),
+	we have a 
+	sheaf \(\Omega_{X / S}\) 
+	which globalizes the construction
+	\(\Omega_{A / R}\).
+\end{lem}
+
+\begin{proof}
+	Use the fact that 
+	\(\Omega_{A / R}\)
+	commutes with localization 
+	plus general scheme machinery:
+	if we have a sheaf on an affine 
+	cover that is compatible on the intersections,
+	then we get a sheaf on the whole scheme.
+\end{proof}
+
+\begin{lem}
+	\(\Omega_{X / S}\) is quasi-coherent
+\end{lem}
+
+\begin{proof}
+	Use the fact that it is defined locally
+	as a module.
+	This is mathematically trivial but 
+	is a good stress test of 
+	``quasicoherent sheaf machinery''
+	in Lean.
+\end{proof}
+
+\begin{itemize}
+    \item affine conormal exact sequence
+		(algebraic computation using the definition)
+	\item define the sheaf of kahler differentials
+		(globalizing the previous)
+	\item sheafy conormal exact sequence
+		(globalizing the previous)
+\end{itemize}
+
+
+We will need ideal sheaves for this.
+
+\section{Noetherian Schemes}
+
+\begin{defn}
+	Let \(X\) be a scheme. 
+	We say \(X\) is \textit{locally noetherian}
+	if there exists an open affine cover
+	\(\{U_{i} = \Spec A_{i}\}\) such that
+	all \(A_{i}\) are noetherian rings.
+\end{defn}
+
+\section{Characteristic}
+
+\newcommand{\ch}{\operatorname{char}}
+\newcommand{\Frac}{\operatorname{Frac}}
+
+
+Let \((R,\mathfrak{m},k)\) be a local ring.
+
+\begin{defn}
+	The \textit{natural characteristic} of \(R\) is
+	the smallest multiple of \(1\) that is equal to zero in \(R\).
+	If no multiple of \(1\) is equal to zero, then \(R\) is
+	defined to have characteristic \(0\)
+	It is denoted \(\ch R\).
+\end{defn}
+
+\begin{lem}
+	If \(R\) is an integral domain, 
+	\(\ch R = \ch \Frac(R)\).
+\end{lem}
+
+\begin{defn}
+	The \textit{residue charateristic} of \(R\) is
+	\(\ch k\).
+\end{defn}
+
+\begin{defn}
+	The \textit{characteristic} of \(R\) is the tuple
+	\((\ch R, \ch k)\).
+\end{defn}
+
+\begin{defn}
+	\(R\) is of \textit{equal characteristic} if
+	\(\ch R = \ch k\).
+\end{defn}
+
+\begin{defn}
+	\(R\) is of \textit{mixed characteristic} if
+	\(\ch R \neq \ch k\)
+\end{defn}
+
+\begin{lem}
+	For any local ring \(R\), \(\ch R\) must be \(0\) or \(p\) 
+	for \(p\) a prime number.
+\end{lem}
+
+\begin{lem}
+	\(R\) is of equal characteristic if and only if 
+	\(R\) contains a field.
+\end{lem}
+
+\begin{lem}
+	If \(R\) is of mixed characteristic, then the characteristic
+	of \(R\) is \((0,p)\) for some prime \(p\).
+\end{lem}
+
+Question: Is it possible to have a local ring 
+of equal characteristic which 
+contains a field, but does not contain its residue field?
+
+
+
+\section{Regularity implies conormal sequence is left-exact}
+
+% I think the following is just wrong,
+%   TODO: delete this when the proof of Hartshorne II.5.7 is finished
+%\begin{lem}
+%	[Pulling back equations along a ring homomorphism]
+%	Let \(R, R^{\prime}\) be \(A\)-algebras.
+%	Let \(f : R \to R^{\prime}\) be an \(A\)-linear ring homomorphism.
+%	Assume that we have a system of equations in \(R^{\prime}\),
+%	i.e.
+%	\[
+%	\sum_{i}^{} a_{ij}r_{i}^{\prime} = 0 
+%	\] 
+%	for some \(r_{i}^{\prime} \in R^{\prime}\).
+%	Assume that each \(r_{i}^{\prime}\) has a preimage,
+%	i.e. \(f^{-1}(r_{i}^{\prime}) \neq \emptyset\) 
+%	for all \(i\).
+%	Then, there exists a simultaneous pullback of
+%	the equations,
+%	i.e.
+%	there exists \(s_{i} \in R\) such that
+%	\(f(s_{i}) = r_{i}^{\prime}\),
+%	such that
+%	\(\sum_{i}^{} a_{ij}s_{i} = 0 \) in \(R\).
+%\end{lem}
+%
+%\begin{proof}
+%	Let \(r_{i}\) be a preimage of \(r_{i}^{\prime}\) 
+%	in \(R\) (for all \(i\)).
+%	Then, we can write
+%	\[
+%	\sum_{i}^{} a_{ij}r_{i} + k_{i} = 0 
+%	\] 
+%	for all \(j\), for \(k_{i} \in \Ker f\).
+%	Now, the proof is to ``inductively
+%	fold the \(k_{i}\) into \(r_{1}\)''.
+%	This means that one defines
+%	\(s_{1}^{1}\) to be \(r_{1 + }\)
+%
+%\end{proof}
+
+\begin{lem}
+	Let \(A\) be a ring, and \(M\) an \(A\)-module.
+	Suppose that, for some prime ideal \(\mathfrak{p}\),
+	\(M_{\mathfrak{p}}\) is a free
+	\(A_{\mathfrak{p}}\)-module.
+	Then there exists an element 
+	\(f \in A \smallsetminus \mathfrak{p}\)
+	such that 
+	\(M_{f}\) is a free \(A_{f}\)-module.
+\end{lem}
+
+\begin{proof}
+	This is exactly the same proof
+	as the next lemma, minus the reduction
+	to being an affine scheme.
+\end{proof}
+
+
+\begin{thm}
+	[Hartshorne Exercise II.5.7a]
+	Let \(X\) be a locally noetherian scheme, and let
+	\(\mathcal{F}\) be a coherent sheaf. 
+	If the stalk \(\mathcal{F}_{x}\) is a free
+	\(\mathcal{O}_{X,x} \)-module for some point
+	\(x \in X\), then there exists
+	a neighborhood \(U\) containing \(x\) such that
+	\(\mathcal{F}|_{U}\) is free.
+\end{thm}
+
+\begin{proof}
+	WLOG, we can assume that \(X\) is affine, so 
+	\(X = \Spec A\), and furthermore we can assume
+	\(A\) is noetherian.
+	Indeed, take an open affine noetherian cover 
+	as guarenteed by local noetherianity. 
+	Then \(x\) is contained in some neighborhood
+	\(U = \Spec A\) in the cover. 
+	% this is a (re)definiton of \Spec A, a slight abuse
+	%   of notation
+	If we show the theorem for \(\Spec A\),
+	then we have shown it for \(X\).
+
+	Now, as \(\mathcal{F}\) is a coherent sheaf on 
+	\(A\), \(\mathcal{F} \isom \tilde{M}\) for some
+	finitely generated module \(M\) on \(A\).
+	\(x\), being a point of \(\Spec A\), 
+	is/corresponds to a prime
+	ideal \(\mathfrak{p}\) in \(A\).
+	Now, our assumption about
+	freeness of the stalk says that
+	\(M_{\mathfrak{p}} \isom A_{\mathfrak{p}}^{\oplus n}\) 
+	for some \(n\).
+	Indeed, \(M_{\mathfrak{p}}\) is the stalk of 
+	\(\tilde{M}\) and \(A_{\mathfrak{p}}\) is the local
+	ring of \(\Spec A\) at \(\mathfrak{p}\).
+	Let \(m_{1} , \ldots , m_{n}\) the a 
+	basis/free generating set for \(M_{\mathfrak{p}}\).
+	In other words, \(m_{i}\) is the image 
+	(along
+	some isomorphism \(A_{\mathfrak{p}}^{\oplus n}\)) of
+	\((0, \ldots, 1, \ldots, 0) \in A_{\mathfrak{p}}^{\oplus n}\)
+	where the \(1\) is in the \(i\)-th place.
+	Since the \(m_{i}\) are elements of the stalk 
+	\(\mathcal{F}_{x} \isom M_{\mathfrak{p}}\),
+	we can choose a neighborhood \(U^{\prime}\) of \(x\) with 
+	representatives \(m_{1}^{\prime}, \ldots, m_{n}^{\prime}\),
+	whose images in the stalk are the \(m_{i}\).
+	Indeed, we can do this individually for each \(m_{i}\),
+	and since there are finitely many, 
+	we can choose \(U^{\prime}\) a neighborhood which dominates each of them in 
+	the diagram (i.e. a neighborhood which is contained in
+	all of them, for example the intersection).
+	Moreover, we can choose \(U^{\prime}\) to be affine by taking a 
+	smaller neighborhood (\(X\) is a scheme).
+	If we prove the theorem for \(U^{\prime}\), then we 
+	have proven it for \(U\),
+	so we can assume that \(U = U^{\prime}\).
+	Aside: we can see that the \(m_{i}^{\prime}\) here aren't
+	zero, because there is a ring map from the sections over
+	\(U^{\prime}\) to the stalk, and the images are nontrivial in the stalk.
+
+
+	Let \(x_{1}, \ldots, x_{k}\) be a finite generating set
+	for \(M\).
+	Now, we have the following equations in \(M_{\mathfrak{p}}\):
+	\[
+		\frac{x_{i}}{1} = \sum_{j=1}^{n} \frac{a_{ij}}{b_{ij}} m_{j} 
+	.\] 
+	Aside: if \(\frac{x_{i}}{1} = 0\), then all the \(a_{ij}\) are zero
+	and the \(b_{ij}\) are \(1\) and the rest of the proof is
+	not affected.
+
+	Using the characterization of when elements of the localization 
+	are zero (i.e. that they are \(s\)-torsion for some 
+	\(s \in A \smallsetminus \mathfrak{p} \)),
+	we have the equations
+	\[
+	t_{i}\prod_{}^{} b_{ij}
+	\left(x_{i} - \sum_{j}^{} \frac{a_{ij}}{b_{ij}} m^{\prime}_{i}  \right)
+	= 0
+	\] 
+	for some \(t_{i} \in A \smallsetminus \mathfrak{p}\),
+	where the sum takes place in
+	in \(M\) (which is a module over \(A\)).
+	Note that we must have the factor of \(\prod_{}^{} b_{ij} \) as
+	one multiply ``top and bottom'' by this term
+	to put the element \(x_{i} - \sum_{}^{} \frac{a_{ij}}{b_{ij}}m_{i} \) 
+	into the form \(\frac{p}{q}\) with \(p,g \in M\).
+
+	Let \(b \colonequals \prod_{i}^{} t_{i}  \prod_{i,j}^{} b_{ij}\). 
+	We know that the \(\frac{x_{i}}{1}\) generate \(M_{b}\) as an
+	\(A_{b}\)-module by the characterization of elements in the localization
+	as fractions (given an element of \(M {b}\), one has an equation
+	in \(M\) for its numerator, and then one over its denominator 
+	is in \(A_{b}\)).
+	Thus, the equations above and the fact that 
+	\(A \smallsetminus \mathfrak{p}\)-torsion is the 
+	kernel of the localization map show that
+	\(m_{i}^{\prime}\) generate \(M_{b}\). 
+
+	Thus, we have that the following map
+	\begin{align*}
+		A_{b}^{\oplus n} &\longrightarrow M_{b} \\
+		(0,\ldots,0,1,0,\ldots,0) &\longmapsto m_{i}^{\prime}
+	\end{align*}
+	is surjective (where the \(1\) is in the \(i\)-th place).
+	Let the Kernel of the above map be denoted \(K\).
+	We want to consider the exact sequence
+	\[
+	\begin{tikzcd}
+	0 \arrow{r}{} & K \arrow{r}{} & 
+	A_{b}^{\oplus n} \arrow{r}{} & M_{b} \arrow{r}{} & 0
+	\end{tikzcd}
+	.\]
+	
+	As \(A\) is noetherian, \(A_{b}\) is noetherian,
+	and thus so is \(A_{b}^{\oplus n}\).
+	Thus, \(K\), which is a submodule of \(a_{b}^{\oplus n}\),
+	is finitely generated, say by 
+	\(k_{1}, \ldots, k_{\ell}\).
+	
+	Now, we apply the localization functor to the above
+	exact sequence. 
+	However, we note that the second (nontrivial) map
+	is indeed the same map as the isomorphism we
+	gave in the first place.
+	Thus, we conclude that \(K_{\mathfrak{p}} = 0\).
+	This means, by the characterization
+	of the kernel of a localization map,
+	that there are \(s_{i} \in A \smallsetminus \mathfrak{p}\) 
+	such that \(s_{i}k_{i} = 0\) in \(A\) for all \(i\).
+	(the same is true if we replace  \(A\) with \(A_{b}\),
+	one can use whichever ring is more convenient).
+	Now, if we let 
+	\(b^{\prime} = b \prod_{i}^{} s_{i} \),
+	then we see that by the equations above
+	and the characterization of the kernel of the localization
+	as torsion, that
+	\(K_{b^{\prime}} = 0\).
+	This means, by the exact sequence above and/or the fact
+	that kernels commute with localization,
+	that \(A_{b^{\prime}}^{\oplus n} \isom M_{b^{\prime}}\),
+	and we have what we want.
+	
+\end{proof}
+
+\begin{thm}
+	[Hartshorne II.8.7]
+	Let \((B,\mathfrak{m},k)\) be a local ring 
+	which contains a field \(k\) 
+	isomorphic to its residue field
+	% is this the right assumption?
+	% should it really be equal characteristic?
+	Then the map 
+	\(\mathfrak{m} / \mathfrak{m}^{2} \to \Omega_{B / k} \otimes_{B} k\)
+	which is the first map in the 
+	conormal left-exact sequence
+	is an isomorphism.
+\end{thm}
+
+
+\begin{thm}
+	[Hartshorne II.8.8]
+	Let \((B,\mathfrak{m},k)\) be a local ring of
+	equal characteristic.
+	% is this the correct assumption?
+	% should it really be that it contains a field isomorphic to the residue field?
+	In addition, assume that
+	\(k\) is a perfect field,
+	and that \(B\) is a localization of
+	a finitely generatd \(k\)-algebra.
+	Then \(\Omega_{B / k}\) is a free \(B\)-module
+	of rank equal to the dimension of \(B\) 
+	if and only if \(B\) is a regular local ring.
+
+\end{thm}
+
+
+\begin{thm}
+	[Hartshorne II.8.15]
+	Let \(X\) be an irreducible separated scheme of finite type 
+	over an algebraically closed field \(k\).
+	Then \(\Omega_{X / k}\) is a locally free
+	sheaf of rank \(\dim X\) if and only if 
+	\(X\) is regular.
+\end{thm}
+
+
+\begin{thm}
+	[Hartshorne II.8.17]
+	Let \(X\) be a regular variety over \(k\).
+	Let \(W\) be an irreducible closed subscheme 
+	with corresponding sheaf of ideals \(\mathscr{I}\).
+	Then \(W\) is regular if and only if the following
+	two conditions hold:
+	\begin{enumerate}[(1)]
+		\item \(\Omega_{Y / k}\) is locally free
+		\item The conormal exact sequence
+			\[
+			\begin{tikzcd}
+			0 \arrow{r}{} & \conormal \arrow{r}{} & 
+			\Omega_{X / k} \otimes \mathcal{O}_{Y}  \arrow{r}{} & 
+			\Omega_{Y / k} \arrow{r}{} & 0
+			\end{tikzcd}
+			\]
+			is exact.
+	\end{enumerate}
+\end{thm}
+
+\begin{cor}
+	In the situation of the conclusion of the previous theorem, 
+	\(\mathscr{I}\) is locally generated by 
+	\(\codim(W)\) elements.
+\end{cor}
+
+\begin{cor}
+	In the situation of the conclusion of the previous theorem,
+	\(\conormal\) is locally free of rank \(\codim(W)\).
+\end{cor}
+
+\section{Discussion of proofs of the left-exactness of conormal bundle}
+
+There are a few of this that I know of:
+
+Hartshorne's proof, which needs
+* nakayama's lemma (in mathlib)
+* integral schemes
+* a proper closed integral subscheme has codimension at least one
+https://math.stackexchange.com/questions/2372649/nakayamas-lemma-in-theorem-8-17-of-chapter-ii-in-hartshorne
+https://math.stackexchange.com/questions/3327995/some-fine-details-in-the-proof-of-hartshorne-ii-8-17
+* also requires Hartshorne II.5.7, Hartshorne II.8.8, Hartshorne II.8.7
+
+Vakil's proof, which needs
+* associated primes
+* geometric interpretation of associated primes
+
+There are also three other proofs from stack exchange,
+https://math.stackexchange.com/questions/846346/hartshorne-theorem-8-17
+
+Ignacio Barros's proof:
+* passes to stalks
+* needs Hartshorne II.8.7, which should be doable with just 
+   facts about differentials
+
+Tomo's proof:
+* Uses the concept of \textit{formally smooth} morphisms
+
+user6's proof:
+* passes to stalks, uses properties of free modules
+* uses Nakayama's lemma
+* requires Hartshorne II.5.7, which is proved here:
+https://dornsife.usc.edu/assets/sites/618/docs/Hartshorne\_Exercises.pdf
+* this also requires the following theorem:
+\begin{thm}
+	Let \(f: M \to M\) be a surjective endomorphism of \(R\)-modules.
+	Then \(R\) is an isomoprhism.
+\end{thm}
+The proof uses Nakayama's lemma, and this is precisely where we need it.
+This proof also uses the following:
+\begin{thm}
+	Any finitely generated projective module over a local ring
+	is free.
+\end{thm}
+And the proof supposedly uses Nakayama.
+
+
+
+% conormal exact sequence
+
+% Sketch of Hartshorne's proof:
+
+% stuff => smooth
+%  use nakayama's lemma, then compute the dimension of the z cotan space
+% smooth => stuff
+%  pick sub sheaf/variety for which it works on stalks, by first direction
+%  this is regular and irreducible.
+%  Then use the universal property integral closure (both schemes are integral)
+%  (probably using integral <==> reduced and irred)
+
+\section{Alternate description of the conormal sheaf}
+
+\begin{itemize}
+	\item restriction of sheaves
+	\item adjunction of pushforward of sheaves and pullback of sheaves
+	\item ideal sheaves
+	\item ``passing to stalks''
+\end{itemize}
+
+The proof of this is detailed in a nice amount of detail in
+https://math.stackexchange.com/questions/1672117/conormal-bundle-of-cartier-divisors
+
+Note that in the stack exchange article they prove more or less this 
+theorem for an arbitrary subvariety, and the part about divisors
+is only because of the alternate description of divisors as ideal sheaves.
+
+\section{The determinant bundle}
+
+
+\section{The adjunction formula}
+
+% the end goal
+
+\begin{thm}[Adjunction Formula]
+	Let \(X\) be a smooth variety and \(D\) a
+	(smooth?) divisor. 
+	Then 
+	\[
+		(K_{X} + D)|_{D} = K_{D}
+	\] 
+	
+\end{thm}
+
+
+
+\end{document}
